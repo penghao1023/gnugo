@@ -1,0 +1,433 @@
+<HTML><HEAD><TITLE>SGF Users Guide</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content="Microsoft FrontPage 5.0" name=GENERATOR></HEAD>
+<BODY aLink=#ff0000 bgColor=#ffffff link=#0000ff text=#000000 vLink=#ff0000>
+<IMG 
+alt="[SGF FF[4] - Smart Game " border=0 
+src="head.gif" width="263" height="26"> <span lang="zh-cn"><i>最后</i></span><I><span lang="zh-cn">更新: </span>2003-10-9(<span lang="zh-cn">原文</span>last updated: 1998-07-27</I>)<P>
+<HR>
+
+<H1 align=center>SGF <span lang="zh-cn">用户指南</span></H1>
+<P align=center><span lang="zh-cn">版本号</span>: 1.2</P>&nbsp; 
+<HR>
+<span lang="zh-cn">作者</span>: Arno Hollosi <BR>
+ <A name=toc>
+<HR>
+<BIG>
+<DL>
+  <DT><span lang="zh-cn">基础篇</span>
+  <DD>
+  <OL>
+    <LI><a href="#what">
+    <span lang="zh-cn">什么是</span> SGF?</a> 
+    <LI>
+    <span lang="zh-cn"><a href="#general">基本概念</a></span> 
+    <LI>
+    <span lang="zh-cn"><a href="#move_vs_place">“走子”和“放置棋子”</a></span> 
+    <LI>
+    <span lang="zh-cn"><a href="#style">风格</a></span><BR>&nbsp; 
+    </LI></OL>
+  <DT> <A name=toc>
+<BIG>
+  <span lang="zh-cn"><font size="4">提高篇</font></span></BIG></a>
+  <DD>
+  <OL start=5>
+    <LI>
+    <span lang="zh-cn"><a href="#variations">分支</a></span> 
+    <LI>
+    <span lang="zh-cn"><a href="#markup">棋盘标记</a></span> 
+    <LI>
+    <span lang="zh-cn"><a href="#annotations">评论和注释</a></span> 
+    <LI>
+    <a href="#gameinfo"><span lang="zh-cn">比赛</span></a><span lang="zh-cn"><a href="#gameinfo">信息</a></span><BR>&nbsp; </LI></OL>
+  <DT><span lang="zh-cn">疑难解答</span>
+  <DD>
+  <OL start=9>
+    <LI><span lang="zh-cn">待续</span> </LI></OL></DD></DL></BIG>
+<HR>
+<A name=what>
+<H1>1. <span lang="zh-cn">什么是 </span>SGF?</H1>SGF <span lang="zh-cn">是</span> <B>Smart Game Format</B><span lang="zh-cn"> 
+的缩写。</span> 
+<P>SGF <span lang="zh-cn">
+是为了存储双人棋类对局记录而设计的一种文件格式。它是纯文本格式，就是它不能包含二进制数据，所以可以方便地使用电子邮件发送或发送到新闻组。基于树形结构的意思是从根节点开始沿着主枝进行或转到
+分支(或分支的分支)。</span> 
+<H3><span lang="zh-cn">版本</span></H3>SGF <span lang="zh-cn">由</span> Anders Kierulf
+<span lang="zh-cn">于</span> 1987 <span lang="zh-cn">发明，并逐渐流行开来。</span>此后<span lang="zh-cn">
+</span>SGF <span lang="zh-cn">有两个主要的修订版。</span> 
+<UL>
+  <LI><B>FF[1]</B> <span lang="zh-cn">是由</span> Anders Kierulf<span lang="zh-cn"> 
+  制订的最初的规格。此规格是其后续版本的核心。一些应用软件仍然使用此已经过时的规格，如 MGT(MS-DOS 版本)，该软件曾随着</span> 
+  Windows<span lang="zh-cn"> 的流行而十分流行。</span> 
+  <LI><B>FF[3]</B> <span lang="zh-cn">是由</span> Martin Müller<span lang="zh-cn"> 
+  于 1993 年修订的规格。此规格是第一个针对棋步的严谨的规格。此后 SGF 
+  成为互联网上围棋棋谱的标准格式。FF[3]定义了大量的新属性，如许多比赛信息属性和一些棋盘标记属性。</span> 
+  <LI><B>FF[4]</B> <span lang="zh-cn">是由</span> Arno Hollosi <span lang="zh-cn">
+  在一些应用软件程序员帮助下于</span> 1997 <span lang="zh-cn">年完成的。</span>FF[4] 
+  <span lang="zh-cn">继承 FF</span>[3]<span lang="zh-cn">的精神提供一个严谨明确的 SGF 
+  定义。一些新的特性如箭头、连线等被引入。另外，FF[4]作为一个教新的规格，尚未被广泛采用，希望在今后能有改变。</span></LI></UL>
+<H3>SGF <span lang="zh-cn">文件看上去是怎样的</span>?</H3><span lang="zh-cn">这是一个简短的例子:</span> <PRE>(;FF[4]GM[1]SZ[19]AP[SGFC:1.13b]
+
+PB[troy]BR[12k*]
+PW[john]WR[11k*]
+KM[0.5]RE[W+12.5]
+DT[1998-06-15]
+TM[600]
+
+;B[pd];W[dp];B[pq];W[dd];B[qk];W[jd];B[fq];W[dj];B[jp];W[jj]
+;B[cn]LB[dn:A][po:B]C[dada: other ideas are 'A' (d6) or 'B' (q5)]
+;W[eo](;B[dl]C[dada: hm - looks troublesome.
+Usually B plays the 3,3 invasion - see variation];W[qo];B[qp]
+<B>...</B>
+;W[sr];B[sk];W[sg];B[pa];W[gc];B[pi];W[ph];B[de];W[ed];B[kn]
+;W[dh];B[eh];W[se];B[sd];W[af];B[ie];W[id];B[hf];W[hd];B[if]
+;W[fp];B[gq];W[qj];B[sj];W[rh];B[sn];W[so];B[sm];W[ep];B[mn])
+<B>...</B>
+(;W[dq]N[wrong direction];B[qo];W[qp]))
+</PRE>
+<H3>SGF <span lang="zh-cn">应用软件</span></H3>SGF <span lang="zh-cn">
+应用软件可运行于任何平台。它们大多数是免费软件，也有一些是共享软件。</span></a><P><span lang="zh-cn">
+没有一个程序是完美无缺的。随着 SGF 的发展，强烈推荐至少每年更新一次你使用的应用软件。现在很多人仍然使用五年以上的软件会带来很多麻烦。</span><P><BIG><B>
+<span lang="zh-cn">请定期更新你的应用软件</span>!</B></BIG> <BR>&nbsp; 
+<P align=right><span lang="zh-cn">
+<a href="#toc">返回顶部</a></span>
+<HR>
+
+<P></P><A name=general>
+<H1>2. <span lang="zh-cn">基本概念</span></H1>SGF <span lang="zh-cn">
+由节点组成并构造成对局树，就是一个节点有且只有一个父节点，但可以有一个或多个子节点。这样 SGF 就可以存储对局记录(一系列着子)和实战的变化图。</span> 
+<P><B><span lang="zh-cn">节点是最小可见单元。</span></B> <span lang="zh-cn">
+就是用户可以沿着对局树一步步地查看节点(向前或向后)。</span> 
+<P><B><span lang="zh-cn">节点由属性组成。</span></B> <span lang="zh-cn">属性包含一定地信息，例如属性 
+</span> <I>B[]</I> <span lang="zh-cn">描述黑子着子，属性 </span> 
+<I>C[]</I> <span lang="zh-cn">包含评论文本 (不用担心: 你不必这些属性名字)。</span><P>
+<span lang="zh-cn">举例说明:&nbsp; 
+你向后查看一个新着子，可以看到评论窗口内显示评论，同时棋盘上对应位置被标记，所有这些信息通过位于同一节点内的不同的属性表现出来。</span> 
+<P><span lang="zh-cn">这样，编辑棋谱有两种层次: 增加／删除节点和增加／删除属性。</span><BR>
+<span lang="zh-cn">请明白这一点:&nbsp; 一个着子是一个节点的一部分，而非节点是着子的一部分。着子通过属性来描述而且节点可以包含不只一个属性。</span><P align=right><span lang="zh-cn">
+<a href="#toc">返回顶部</a></span>
+<HR>
+
+<P></P><A name=move_vs_place>
+<H1>3. <span lang="zh-cn">“走子”和“放置棋子”</span></H1>SGF <span lang="zh-cn">
+提供两种在棋盘上增加棋子的方法: </span>&nbsp;<UL>
+  <LI><span lang="zh-cn">走子</span> 
+  <LI><span lang="zh-cn">放置棋子</span> </LI></UL><B><span lang="zh-cn">走子</span></B>
+<span lang="zh-cn">
+是象真正对局时那样移动，就是你可以走子到空白处，你每次只可以走动一个棋子(这里是每节点)，你可以通过走子来捕获对方棋子。在很多应用软件中当前的走子被高亮显示。</span><P><B>
+<span lang="zh-cn">放置棋子</span></B> <span lang="zh-cn">是把棋子放置在棋盘上来设置棋形，
+例如让子、设置题形或分析形势。这种情况下，可以放置多个棋子及不同色的棋子，移走棋子和改变子色等都在一个节点中。</span><BR>
+<span lang="zh-cn">注意: 不能捕获棋子，因为这不是按比赛规则进行！</span><H3><span lang="zh-cn">约定</span></H3>
+<span lang="zh-cn">区分走子和使棋盘某处有子是良好的风格(从 FF[4] 开始被要求)。</span><P>
+<span lang="zh-cn">因此把设置属性和走子属性放在一个节点中是</span> <span lang="zh-cn"> <B>非法的</B>。</span><P><B>
+<span lang="zh-cn">走子属性</span></B> <span lang="zh-cn">
+是一个黑子或白子的着子，可以对一个走子给予注释(例如恶手、有趣手等)或指示该手后还剩多少时间。</span><BR><span lang="zh-cn"><B>设置属性</B> 
+是用来设置棋形就是在棋盘上放置黑白子或指示轮哪方走棋。</span><P><span lang="zh-cn">参看: 设置属性和走子属性的</span> 
+<a href="proplist_t.html"><span lang="zh-cn">详细列表</span></a> <span lang="zh-cn">
+。</span><P><span lang="zh-cn">令人遗憾的是许多应用软件允许混合设置属性和走子属性，导致用户创建不良风格的 SGF 文件。</span><P align=right><span lang="zh-cn">
+<a href="#toc">返回顶部</a></span>
+<HR>
+
+<P></P><A name=style>
+<H1>4. <span lang="zh-cn">风格</span></H1>
+<UL>
+  <LI>第一个分支是主分支。<BR>主分支应当总是用于记录实战进行。用其它分支记录参考图和变化图。<BR>&nbsp; 
+  <LI>不要模仿成兄弟节点间的进行，而使用支持兄弟节点间进行的应用软件。请看 <a href="#variations">相关定义和解释</a>。 <BR>&nbsp; 
+  <LI>省略位于结尾的放弃一手和空的节点。<BR>
+  对局记录的最后节点应当包含对局的最后一着，不要把比赛信息属性如“黑胜<span lang="zh-cn">并且粘劫</span>”放在评论属性中，宁可增加一个走子属性<span lang="zh-cn">为粘劫</span>的节点。<BR>&nbsp; 
+  <LI>不要用放置棋子代替走子。<BR>
+  不要把按规则进行的走子用放置棋子代替。一些应用软件的某些高级功能依赖按规则的走子，而且，应用软件的进到下一手功能不能指出放置棋子的位置。请看走子和放置棋子的 
+  <a href="#move_vs_place">区别</a> 。<BR>&nbsp; 
+  <LI>标记文字的长度<BR>从 FF[4]  起可以使用任意长度的标记文字。但一些老的应用软件不能正确显示长于2个字母的标记文字。谨慎使用长的文字标记！<BR>&nbsp; 
+  <LI>不要在第一个评论属性中使用诸如“某某执黑”等比赛信息，这里应当使用比赛信息属性。请看 <a href="#why_gameinfo">原因</a> 
+  。 <BR>&nbsp; 
+  <LI>使用注释作为标准的形势分析(例如: 恶手<span lang="zh-cn">或手筋</span>)。<BR>注释是 SGF 属性中专有的，请看它的 <a href="#annotations">用法</a> 
+  。<BR>&nbsp; </LI></UL>
+<P align=right><span lang="zh-cn">
+<a href="#toc">返回顶部</a></span>
+<HR>
+
+<P></P><A name=variations>
+<H1>5. 分支</H1><IMG align=right src="vari.gif" width="389" height="244"> SGF 
+在记录主干(实战进行)的同时记录分支，由此可以分析不同的进行。见右图。分支通常用字母 A 表示，这是为什么有的应用软件用 “A” 表示进入变化图。<P>
+应用软件演示分支进行有两种方式: 兄弟节点方式和子节点方式。 
+<P> <B>子节点方式演示分支是 </B>从父节点可以向任一子节点进行。<P><B>兄弟节点方式演示分支是 </B>
+从父节点下的某一子节点可以向该父节点的另一子节点进行。 
+<P>
+这两种不同方式的分支进行方式可能会引起混淆。例如，如果有评论是这样的: 这手棋不好，请看变化图B。如果作者使用子节点演示方式的应用软件，该评注则处于父节点上。如果读者使用兄弟节点演示方式的应用软件，将会看到评注在父节点上，但没有变化图，变化图在下一手才出现。反之(作者用兄弟节点方式，读者用子节点方式)也出现类似问题，读者在子节点上看到评注，但不得不退到上一手才能进入变化图。 
+<P>
+许多人更喜欢兄弟节点方式因为它比较自然。他们甚至在子节点方式的应用软件中使用模仿的兄弟节点方式。他们的做法是在分支节点上取走前一个着子并增加一个新着子。这是<b>不好的风格</b>，而且自 
+FF[4] 
+起这也是非法的句法。它将导致你无法一览某一手的所有变化图，而且，转换成其它文件格式时也会带来麻烦。如果你喜欢兄弟节点方式那么就使用兄弟节点方式的应用软件。<BR clear=all>
+<P align=right><span lang="zh-cn">
+<a href="#toc">返回顶部</a></span>
+<HR>
+
+<P></P><A name=markup>
+<H1>6. <span lang="zh-cn">棋盘标记</span></H1>SGF <span lang="zh-cn">
+为标记棋盘提供了广泛的选择。你在杂志或书本上见过的几乎所有标记都可以使用 SGF 来标记。不过，有些应用软件不能处理某种标记，下面是可使用的标记列表: </span><BR>　<P>
+<DIV align=center>
+<TABLE border=1 width="899">
+  <TBODY>
+  <TR>
+    <TH width="150"><span lang="zh-cn">标记</span>
+    <TH width="53"><span lang="zh-cn">属性</span>
+    <TH width="674"><span lang="zh-cn">备注</span> 
+  <TR>
+    <TD align=middle width="150"><IMG src="ma.gif" width="129" height="60">
+    <TD align=middle width="53">MA[] 
+    <TD width="674"><span lang="zh-cn">很常见</span><BR>(<span lang="zh-cn">自</span> FF[3]<span lang="zh-cn"> 
+    起被引入</span>) 
+  <TR>
+    <TD align=middle width="150"><IMG src="tr.gif" width="128" height="58">
+    <TD align=middle width="53">TR[] 
+    </a> 
+    <TD width="674"><span lang="zh-cn">很常见</span><A name=markup><BR>(<span lang="zh-cn">自</span> FF[3]<span lang="zh-cn"> 
+    起被引入</span>)
+  <TR>
+    <TD align=middle width="150">simple markup
+    <TD align=middle width="53">M[] 
+    <TD width="674"><span lang="zh-cn">过时的</span> (<span lang="zh-cn">仅 </span>
+    FF[1]<span lang="zh-cn"> 使用</span>), <span lang="zh-cn">很常见</span><BR>
+    <span lang="zh-cn">此标记被</span> MA[] 
+      <span lang="zh-cn">和</span> TR[]<span lang="zh-cn"> 继承。不过，老的应用软件无法识别 MA[] 
+    和 TR[] ，仍然使用</span> M[] 
+  <TR>
+    <TD align=middle width="150"><IMG src="cr.gif" width="128" height="56">
+    <TD align=middle width="53">CR[] 
+    <TD width="674"><A name=markup>
+    <span lang="zh-cn">常见</span><BR>(<span lang="zh-cn">自</span> FF[3]<span lang="zh-cn"> 
+    起被引入</span>) </a>&nbsp;<TR>
+    <TD align=middle width="150"><IMG src="sq.gif" width="128" height="55">
+    <TD align=middle width="53">SQ[] 
+    <TD width="674"><span lang="zh-cn">常见</span><A name=markup><BR>(<span lang="zh-cn">自</span> FF[<span lang="zh-cn">4</span>]<span lang="zh-cn"> 
+    起被引入</span>)
+  <TR>
+    <TD align=middle width="150"><IMG src="lb.gif" width="128" height="58">
+    <TD align=middle width="53">LB[] 
+    <TD width="674"><span lang="zh-cn">常见</span><A name=markup>(<span lang="zh-cn">自</span> FF[3]<span lang="zh-cn"> 
+    起被引入</span>) </a><BR><span lang="zh-cn">老的应用软件不能显示(例如: MGT </span><A name=markup>
+    <span lang="zh-cn">DOS版</span></a><span lang="zh-cn">)。注意由多个字符组成的长文字标记是被允许的。不过，许多应用软件只能显示前2－3个字符。请谨慎使用长文件标记。</span> 
+  <TR>
+    <TD align=middle width="150">letters
+    <TD align=middle width="53">L[] 
+    <TD width="674"><span lang="zh-cn">过时的</span> (<span lang="zh-cn">仅 </span>FF[1]<span lang="zh-cn"> 
+    使用</span>), <span lang="zh-cn">很常见</span><BR><A name=markup>
+    <span lang="zh-cn">此标记被</span> <span lang="zh-cn">LB</span>[] 
+      <span lang="zh-cn">继承。不过，老的应用软件无法识别 LB[] ，仍然使用</span> <span lang="zh-cn">L</span>[]</a> 
+  <TR>
+    <TD align=middle width="150"><IMG src="sl.gif" width="129" height="58">
+    <TD align=middle width="53">SL[] 
+    <TD width="674"><span lang="zh-cn">过时的，不常见</span><TR>
+    <TD align=middle width="150"><IMG src="dd.gif" width="128" height="62">
+    <TD align=middle width="53">DD[] 
+    <TD width="674"><span lang="zh-cn">新的</span> <A name=markup>
+    (<span lang="zh-cn">自</span> FF[<span lang="zh-cn">4</span>]<span lang="zh-cn"> 
+    起被引入</span>)</a>, <span lang="zh-cn">很不常见</span><BR><span lang="zh-cn">
+    (也许将来会更常见)</span> 
+  <TR>
+    <TD align=middle width="150"><IMG src="ar.gif" width="150" height="120">
+    <TD align=middle width="53">AR[] 
+    <TD width="674"><A name=markup>
+    <span lang="zh-cn">新的</span> (<span lang="zh-cn">自</span> FF[<span lang="zh-cn">4</span>]<span lang="zh-cn"> 
+    起被引入</span>), <span lang="zh-cn">很不常见</span><BR><span lang="zh-cn">
+    (也许将来会更常见)</span></a> 
+  <TR>
+    <TD align=middle width="150"><IMG src="ln.gif" width="149" height="115">
+    <TD align=middle width="53">LN[] 
+    <TD width="674"><A name=markup>
+    <span lang="zh-cn">新的</span> (<span lang="zh-cn">自</span> FF[<span lang="zh-cn">4</span>]<span lang="zh-cn"> 
+    起被引入</span>), <span lang="zh-cn">很不常见</span><BR><span lang="zh-cn">
+    (也许将来会更常见)</span></a> 
+  </TR></TBODY></TABLE></DIV>&nbsp; 
+<P align=right><span lang="zh-cn">
+<a href="#toc">返回顶部</a></span>
+<HR>
+
+<P></P><A name=annotations>
+<H1>7. <span lang="zh-cn">评论和注释</span></H1><span lang="zh-cn">SGF 
+允许在每个节点存储文本来评论一个走子或位置，评论通常显示在你的SGF应用软件的评论窗口。文本容易被编辑，但也有不利的方面: </span><UL>
+  <LI><span lang="zh-cn">语言－如果你不懂该语言，你就无法理解评论。</span> 
+  <LI><span lang="zh-cn">应用软件不能使用文本来实现一些高级功能(如不能搜索恶手或手筋等)。</span> 
+  <LI><span lang="zh-cn">计算机玩家不能利用文本信息。</span></LI></UL><span lang="zh-cn">因此</span> SGF
+<span lang="zh-cn">提供一系列注释属性。这些属性被编成不同的编码。它们存储的不是可读文本，而是具有特别意义的代号。应用软件阅读这样的 SGF 
+文件就可以提供以下的功能: </span>&nbsp;<UL>
+  <LI><span lang="zh-cn">多语言支持</span> - <span lang="zh-cn">应用软件使用选定的语言显示信息。</span><LI>
+  <span lang="zh-cn">搜索或其它数据库功能</span><LI><span lang="zh-cn">
+  计算机玩家可利用布局或定式库中的注释来决定最佳应手或好的变化手。</span> </LI></UL><span lang="zh-cn">
+有三种类型的注释: 基本注释，走子注释和位置注释。请看一览表: </span><P>
+<TABLE border=1 cellPadding=5>
+  <TBODY>
+  <TR>
+    <TH><span lang="zh-cn">注释</span>
+    <TH><span lang="zh-cn">属性</span>
+    <TH><span lang="zh-cn">类型</span>
+    <TH><span lang="zh-cn">程度</span>
+    <TH><span lang="zh-cn">意义</span> 
+  <TR>
+    <TD>黑好
+    <TD>GB
+    <TD>基本注释
+    <TD><span lang="zh-cn">是</span>
+    <TD>黑棋形势占优 
+  <TR>
+    <TD>白好
+    <TD>GW
+    <TD>基本注释
+    <TD><span lang="zh-cn">是</span></a><TD>白<A name=annotations>棋形势占优 
+  <TR>
+    <TD>两分
+    <TD>DM
+    <TD>基本注释
+    <TD><span lang="zh-cn">是</span>
+    <TD>黑白双方形势相当 
+  <TR>
+    <TD>形势不明
+    <TD>UC
+    <TD>基本注释
+    <TD><span lang="zh-cn">是</span>
+    <TD>黑白双方形势不明 
+  <TR>
+    <TD>热点
+    <TD>HO
+    <TD>基本注释
+    <TD><span lang="zh-cn">是</span>
+    <TD>重要的节点，令人关注的着子 
+  <TR>
+    <TD>手筋
+    <TD>TE
+    <TD>走子注释
+    <TD><span lang="zh-cn">是</span>
+    <TD>局部的好的着手 
+  <TR>
+    <TD>恶手
+    <TD>BM
+    <TD>走子注释
+    <TD><span lang="zh-cn">是</span>
+    <TD>不好的着手 
+  <TR>
+    <TD>疑问手
+    <TD>DO
+    <TD>走子注释<TD><span lang="zh-cn">否</span>
+    <TD>值得推敲的着手 
+  <TR>
+    <TD>有趣手 
+    <TD>IT
+    <TD>走子注释
+    <TD><span lang="zh-cn">否</span>
+    <TD>有趣的着手 
+  <TR>
+    <TD>轮谁走
+    <TD>PL
+    <TD>位置注释
+    <TD><span lang="zh-cn">否</span>
+    <TD>轮某方走 
+  </TBODY></TABLE>
+<P><span lang="zh-cn">令人遗憾的是许多应用软件不能支持这些属性，希望将来能有所改观。尽可能使用注释属性，尽管它们很简单，却有很大的优势。</span> 
+<P align=right><span lang="zh-cn">
+<a href="#toc">返回顶部</a></span>
+<HR>
+
+<P></P><A name=gameinfo>
+<H1>8. 比赛信息</H1>SGF 为比赛信息提供了广泛的属性，通常，应用软件提供一个对话框或者另外的窗口用于输入比赛信息。<P>
+注意，某些条目属性使用强制的格式。为什么？<BR>
+因为符合标准的条目可以方便地被应用软件解析，并且可以被从多个对局文件中搜索或者用读者喜爱(定制)的方式显示。令人遗憾的是许多应用软件允许用户输入不合法的信息，所以能否输入正确的信息取决于用户，请谨慎使用。<P>
+例如，你有一个含有大约5000局的棋谱集，你需要从中寻找赵治勋在1996年3月的对局，如果日期被写为如“DTT[5th March 1996]”,“ DT[11/3/96]”,“DT[1996/3/7]”,“DT[1996 6 8]”，你如何知道这些是你需要寻找的对局呢？ 
+<A name=why_gameinfo>
+<H3>　</H3></a>
+<H3>我们为什么使用比赛信息？<A name=why_gameinfo></H3>有时你看到一个 SGF 
+文件把所有的信息都存储在第一个评论中，这是非常不好的风格。<BR>
+如果信息被存储在评论中，那么它几乎不可能被计算机程序搜索到。因此需要把比赛信息存放在合适的位置，这将在将来节约你很多时间并且使你的数据库更加方便使用，使转换和交换更方便。<H3>
+比赛信息属性列表</H3>这里是附有简短描述的全部列表，如果此列表不能解答你的疑问，请看 </a>
+<a href="http://go.chengfan.info/static/sgf_cn/properties.html#AN"><span lang="zh-cn">
+详细规格说明</span></a> <BR>
+注意: 被推荐的不是被强制的。但你应尽可能使用被推荐的格式。 
+<P>
+<TABLE border=1 width="100%" style="border-collapse: collapse" bordercolor="#111111" cellpadding="0" cellspacing="0">
+  <TBODY>
+  <TR>
+    <TH width="83">Name
+    <TH width="74">Property
+    <TH width="833">Notes 
+  <TR>
+    <TD width="83"><span lang="zh-cn">执黑者姓名/执白者姓名</span><TD width="74">PB[]/PW[] 
+    <TD width="833"><span lang="zh-cn">执黑者或执白者的姓名</span><BR><span lang="zh-cn">
+    尽量保持姓名的一致，职业棋手推荐使用官方公布的姓名。</span><TR>
+    <TD width="83"><span lang="zh-cn">执黑者级别/执白者级别</span><TD width="74">BR[]/WR[] 
+    <TD width="833"><span lang="zh-cn">执黑者或执白者的棋力</span><BR><span lang="zh-cn">
+    推荐使用下列格式: </span><PRE><span lang="zh-cn">具有“级别”的棋手，使用“</span>10k<span lang="zh-cn">”</span> <span lang="zh-cn">或</span> <span lang="zh-cn">“</span>10 kyu<span lang="zh-cn">”</span>
+<span lang="zh-cn">具有“段位”的棋手使用“</span>3d<span lang="zh-cn">”或“</span>3 dan<span lang="zh-cn">”</span>
+<span lang="zh-cn">围棋服务器通常在被确定的段位后加“</span>*<span lang="zh-cn">”，在不被确定的段位后加“</span>?<span lang="zh-cn">”，例如“</span>10k*<span lang="zh-cn">”、“</span>3d?<span lang="zh-cn">”</span>
+<span lang="zh-cn">由于围棋服务器段位和被围棋机构正式授予的段位都用“</span>d<span lang="zh-cn">”表示容易混淆，一些应用软件使用“</span>p<span lang="zh-cn">”作为被围棋机构正式授予的段位，以示区别。</span></PRE>
+  <TR>
+    <TD width="83"><span lang="zh-cn">执黑者队名/执白者队名</span><TD width="74">BT[]/WT[] 
+    <TD width="833"><span lang="zh-cn">执黑者或执白者所在的队名</span><TR>
+    <TD width="83"><span lang="zh-cn">比赛结果</span><TD width="74">RE[] 
+    <TD width="833"><span lang="zh-cn">比赛结果</span><BR><B><span lang="zh-cn">
+    强制使用以下格式: </span></B><PRE>"0" <span lang="zh-cn">表示和局</span>
+"B+score" <span lang="zh-cn">表示黑胜</span>
+"W+score" <span lang="zh-cn">表示白胜</span>, <span lang="zh-cn">例如</span> "B+2.5", "W+64" or "B+0.5"
+"B+R"/"B+Resign" <span lang="zh-cn">和</span> "W+R"/"W+Resign" <span lang="zh-cn">表示中盘胜</span>
+<B><span lang="zh-cn">你不能写作“黑中盘胜”</span></B></PRE><span lang="zh-cn">请看更多的</span> <span lang="zh-cn">
+    <a href="http://go.chengfan.info/static/sgf_cn/properties.htmls#RE">详情描述</a></span>&nbsp; 
+  <TR>
+    <TD width="83"><span lang="zh-cn">贴还</span><TD width="74">KM[] 
+    <TD width="833"><span lang="zh-cn">贴还(指贴还后手方的数目)</span><BR><B><span lang="zh-cn">
+    强制使用以下格式: </span></B><PRE><span lang="zh-cn">使用实数，例如: </span>"5.5", "0", "0.5" or "-10," <span lang="zh-cn">等</span>
+<span lang="zh-cn">不要使用: </span>"<span lang="zh-cn">5点</span>", "<span lang="zh-cn">半目</span>", "<span lang="zh-cn">五又二分之一子</span>", <span lang="zh-cn">等</span></PRE>
+  <TR>
+    <TD width="83"><span lang="zh-cn">让子</span> 
+    <TD width="74">HA[] 
+    <TD width="833"><span lang="zh-cn">让子的数目</span><BR><B><span lang="zh-cn">
+    强制使用以下格式: </span></B><PRE><span lang="zh-cn">使用大于零的整数，例如: </span>"1", "5" or "9"
+<span lang="zh-cn">不要使用: </span> &quot;<span lang="zh-cn">二子</span>", "<span lang="zh-cn">三</span>"<span lang="zh-cn"> 等</span></PRE>
+  <TR>
+    <TD width="83"><span lang="zh-cn">时间限制</span><TD width="74">TM[] 
+    <TD width="833"><span lang="zh-cn">每方规定的使用时间</span><BR><B><span lang="zh-cn">
+    强制使用以下格式: </span></B><PRE><span lang="zh-cn">时间使用以秒为单位的实数，例如</span> "4600", "300"
+<span lang="zh-cn">不要使用: </span>"1 <span lang="zh-cn">小时</span>"</PRE>
+    <span lang="zh-cn">如果你的应用软件不能把实数转换成易读的格式，是一件尴尬的事情，尽管如此，还是请坚持使用实数值。</span> 
+  <TR>
+    <TD width="83"><span lang="zh-cn">比赛日期</span><TD width="74">DT[] 
+    <TD width="833"><span lang="zh-cn">比赛时间</span><BR><B><span lang="zh-cn">
+    强制使用以下格式: </span></B><PRE><span lang="zh-cn">使用 </span>ISO<span lang="zh-cn"> 标准格式</span> "YYYY-MM-DD"
+<span lang="zh-cn">不要使用其它的分隔符诸如</span> "/" <span lang="zh-cn">或</span> " " <span lang="zh-cn">或</span> ".".
+<span lang="zh-cn">例如: 一场在一九九七年三月五日进行的比赛记为:  </span>1997-03-05</PRE>
+    <span lang="zh-cn">请看更多的</span>
+    <span lang="zh-cn"><a href="http://go.chengfan.info/static/sgf_cn/properties.html#DT">详情描述</a></span> 
+  <TR>
+    <TD width="83"><span lang="zh-cn">赛事名称</span><TD width="74">EV[] 
+    <TD width="833"><span lang="zh-cn">赛事的名称(例如: 应氏杯)</span><TR>
+    <TD width="83"><span lang="zh-cn">回合数</span><TD width="74">RO[] 
+    <TD width="833"><span lang="zh-cn">比赛的回合数，用于番棋</span><TR>
+    <TD width="83"><span lang="zh-cn">比赛地点</span><TD width="74">PC[] 
+    <TD width="833"><span lang="zh-cn">比赛发生的地点(例如城市、国家)，也可以是围棋网络服务器</span><TR>
+    <TD width="83"><span lang="zh-cn">比赛规则</span><TD width="74">RU[] 
+    <TD width="833"><span lang="zh-cn">比赛规则</span> (<span lang="zh-cn">例如: 中国规则、日本规则、韩国规则、应氏规则等</span>) 
+  <TR>
+    <TD width="83"><span lang="zh-cn">比赛名称</span><TD width="74">GN[] 
+    <TD width="833"><span lang="zh-cn">比赛的名称</span><TR>
+    <TD width="83"><span lang="zh-cn">开局</span><TD width="74">ON[] 
+    <TD width="833"><span lang="zh-cn">描述开局</span> (<span lang="zh-cn">例如: 三连星</span>) 
+  <TR>
+    <TD width="83"><span lang="zh-cn">比赛评论</span><TD width="74">GC[] 
+    <TD width="833"><span lang="zh-cn">对比赛的一般的评论</span> 
+  <TR>
+    <TD width="83"><span lang="zh-cn">棋谱来源</span> 
+    <TD width="74">SO[] 
+    <TD width="833"><span lang="zh-cn">棋谱来源 </span>(<span lang="zh-cn">例如: 书、杂志等</span>) 
+  <TR>
+    <TD width="83"><span lang="zh-cn">棋谱录入</span> 
+    <TD width="74">US[] 
+    <TD width="833"><span lang="zh-cn">录入棋谱的人或程序</span><TR>
+    <TD width="83"><span lang="zh-cn">棋谱评论</span> 
+    <TD width="74">AN[] 
+    <TD width="833"><span lang="zh-cn">评注者姓名</span> 
+  <TR>
+    <TD width="83"><span lang="zh-cn">版权信息</span><TD width="74">CP[] 
+    <TD width="833"><span lang="zh-cn">棋谱的版权信息</span></TR></TBODY></TABLE>
+<P> 
+<P align=right><span lang="zh-cn">
+<a href="#toc">返回顶部</a></span>
+<HR>
+
+<P></P></BODY></HTML>

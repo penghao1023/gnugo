@@ -1,0 +1,313 @@
+<HTML>
+<HEAD><TITLE>SGF file format FF[4]</TITLE>
+</HEAD>
+<BODY alink="#FF0000" bgcolor="#FFFFFF" link="#0000FF" text="#000000" vlink="#FF0000">
+
+<A HREF="index.html">
+<IMG SRC="head.gif" ALT="[SGF FF[4] - Smart Game Format]" BORDER=0 width="263" height="26"></A>
+<span lang="zh-cn"><i>最后</i></span><i><span lang="zh-cn">更新: </span>2003-9-26</span>(<span lang="zh-cn">原文</span>last updated: 1999-12-17)</i>
+
+<H1>目录</H1>
+
+<UL>
+<LI><A HREF="#1">SGF 基础</A>
+<LI><A HREF="#2">基本 (EBNF) 定义</A>
+	<UL><LI><A HREF="#ebnf-def">EBNF 定义</A>
+	<LI><A HREF="#2.2">有关属性的一些说明</A>
+		<UL><LI><A HREF="#2.2.1">属性的类型</A>
+		<LI><A HREF="#2.2.2">属性的特性 </A>
+		<LI><A HREF="#2.2.3">如何处理未知和不规范的属性</A>
+		<LI><A HREF="#2.2.4">专用的属性</A>
+</UL></UL>
+<LI><A HREF="#types">属性值类型</A>
+	<UL><LI><A HREF="#double">程度</A>
+	<LI><A HREF="#text">文本</A>
+	<LI><A HREF="#simpletext">单文本</A>
+	<LI><A HREF="#stone">棋子</A>
+	<LI><A HREF="#move/pos">走子和点</A>
+		<UL><LI><A HREF="#3.5.1">压缩点阵</A>
+</UL></UL>
+</UL>
+
+<HR SIZE=10 NOSHADE>
+
+<A NAME="1"><H1>1. SGF <span lang="zh-cn">基础</span></H1></A>
+
+SGF <span lang="zh-cn">是纯文本格式</span> (<span lang="zh-cn">非二进制格式</span>)<span lang="zh-cn">。</span>
+<P>
+<span lang="zh-cn">它包含对局树，包括所有的节点和属性，没有其它内容。这样
+的文件格式可以准确记录并再现包含各属性列表的内在的规则的结构，不存在例外情况。如果一个对局需要在文档中存储一些信息，必定有一个</span><span lang="en-us">(</span>对局专用的<span lang="en-us">)</span>属性被定义为这个目的。
+<P>
+<TABLE BORDER=1>
+<TR><TD><IMG SRC="TA1.gif" ALT="[tree (TA1.gif)]" width="216" height="114">
+<TD>
+<IMG SRC="ta3.gif" ALT="[user view of tree (ta3.gif)]" width="285" height="203">
+<TD ROWSPAN=2 ALIGN=TOP>此树被按前序记录为:
+<NOBR>(root(ab(c)(de))(f(ghi)(j)))</NOBR>
+<P>SGF 示例:
+<PRE>(;FF[4]C[root](;C[a];C[b](;C[c])
+(;C[d];C[e]))
+(;C[f](;C[g];C[h];C[i])
+(;C[j])))
+</PRE>
+<TR><TD>树结构的示例
+<TD>用户可把树结构看做这样。<BR>
+第一行是对局的主线，用于记录实战。
+<BR> 其它行是变化图。
+</TABLE>
+<P>
+请看 <a href="var.html">更多的示例</a> 。
+<P>
+<span lang="zh-cn"><b>节点</b></span><B><span lang="zh-cn">编号</span>:</B><BR>
+<span lang="zh-cn">建议节点从 0 开始编号。存储在文件中的节点应当用此方法编号。</span><BR>
+<span lang="zh-cn">例如</span> (<span lang="zh-cn">从文件起始处</span>): 
+<span lang="zh-cn">根</span>=0, a=1, b=2, c=3, d=4, e=5, f=6, g=7, h=8, i=9, j=10.
+<P>
+SGF <span lang="zh-cn">文件中所有的属性标识及属性值使用</span> ASCII <span lang="zh-cn">
+字符集，除单文本和文本外。单文本和文本使用的字符集由 </span><a href="http://go.chengfan.info/static/sgf_cn/properties.html#CA">CA</a>
+<span lang="zh-cn">属性决定。</span>
+
+<P><HR SIZE=10 NOSHADE>
+<A NAME="2"><H1>2. <span lang="zh-cn">基本</span> (EBNF) <span lang="zh-cn">定义</span></H1></A>
+
+<span lang="zh-cn">有关</span> EBNF <span lang="zh-cn">协定的详细情况，可以参看 </span>
+<A HREF="http://www.instantweb.com/foldoc/foldoc.cgi?Backus-Naur+Form">Computing Dictionary</A>.
+<BR><span lang="zh-cn">这里是要点一览</span>:
+
+<TABLE BORDER=2><TR><TD BGCOLOR=#efffff>
+<pre>  "..." : <span lang="zh-cn">术语符号</span>
+  [...] : <span lang="zh-cn">选项:</span> <span lang="zh-cn">最多出现一次</span>
+  {...} : <span lang="zh-cn">重复项</span>: <span lang="zh-cn">任意次数，包括 0 次</span>
+  (...) : <span lang="zh-cn">分组</span>
+    |   : <span lang="zh-cn">并列选项，只能选一个</span>
+ <span lang="zh-cn"><i>斜体字</i></span>: <span lang="zh-cn">参数，在其它地方有解释</span>
+</pre>
+</TD></TR></TABLE><P>&nbsp;
+
+<A NAME="ebnf-def"><H2>2.1. EBNF <span lang="zh-cn">定义</span></H2></A>
+
+<TABLE BORDER=2><TR><TD BGCOLOR=#efefff>
+<PRE>  <span lang="zh-cn">多对局集 </span>= <span lang="zh-cn">对局树</span> { <span lang="zh-cn">对局树</span> }
+  <span lang="zh-cn">对局树</span> <span lang="zh-cn"> </span> = "(" <span lang="zh-cn">序列</span> { <span lang="zh-cn">对局树</span> } ")"
+  <span lang="zh-cn">序列</span>  <span lang="zh-cn">   </span>= <span lang="zh-cn">节点</span> { <span lang="zh-cn">节点</span> }
+  <span lang="zh-cn">节点</span>     = ";" { <span lang="zh-cn">属性</span> }
+  <span lang="zh-cn">属性</span>   <span lang="zh-cn">  </span>= <span lang="zh-cn">属性标识</span> <span lang="zh-cn">属性值</span> { <span lang="zh-cn">属性值</span> }
+  <span lang="zh-cn">属性标识</span> = <I><span lang="zh-cn">大写字母</span></I> { <span lang="zh-cn">大写字母</span> }
+  <span lang="zh-cn">属性值</span>  <span lang="zh-cn"> </span>= "[" <span lang="zh-cn">值</span> "]"
+  <span lang="zh-cn">值</span> <span lang="zh-cn">      </span>= (<span lang="zh-cn">值类型</span> | <I><span lang="zh-cn">组合值类型</span></I>)
+  <span lang="zh-cn">值类型</span>  <span lang="zh-cn"> </span>= (<I><span lang="zh-cn">无值</span> | <span lang="zh-cn">数</span> | <span lang="zh-cn">实数</span> | <span lang="zh-cn">程度</span> | <span lang="zh-cn">颜色</span> | <span lang="zh-cn">单文本</span> |
+		<span lang="zh-cn">文本</span> | <span lang="zh-cn">点</span>  | <span lang="zh-cn">走子</span> | <span lang="zh-cn">棋子</span></I>)</PRE></TD></TR>
+</TABLE><P>
+
+<span lang="zh-cn">空白符</span> (<span lang="zh-cn">空格</span>, <span lang="zh-cn">
+制表符</span>, <span lang="zh-cn">回车符</span>, <span lang="zh-cn">换行符</span>, 
+<span lang="zh-cn">垂直制表符等</span>)
+<span lang="zh-cn">可以出现在属性值、属性、节点、序列和对局树之间的任意位置。</span><BR>
+<span lang="zh-cn">有两种方式属性列表</span>: 'list of' and 'elist of'.
+<TABLE BORDER=2><TR><TD BGCOLOR=#efefff>
+<PRE><B>'list of':</B>    <span lang="zh-cn">属性值</span> { <span lang="zh-cn">属性值</span> }
+<B>'elist of':</B>   ((<span lang="zh-cn">属性值</span> { <span lang="zh-cn">属性值</span> }) | <span lang="zh-cn">无值</span>)
+             <span lang="zh-cn"> 换句话说，</span>elist <span lang="zh-cn">是</span> list <span lang="zh-cn">或</span> "[]&quot;
+</PRE>
+</TABLE><P>
+
+<A NAME="2.2"><H2>2.2. 有关属性的一些说明</H2></A>
+
+属性标志符是仅使用大写字母定义的关键字。目前每个标志符用一个或两个大写字母表示。
+<P>
+在一个节点中，属性的次序是不固定的。它可能在任何时候被任何应用软件修改和保存。而且，应用软件<B>不</B>应该依靠属性值在节点中的次序。属性值的次序允许被适当地改变。
+<P>
+只要不影响到本文定义的标准属性，任何人可以自由地定义附加的或专用的属性。
+<P>
+因此，如果有人编写了一个SGF阅读器，具有忽略未知属性的能力是一项重要的功能。应用软件在忽略未知或不规范的属性时，应当给出一条警告信息 。
+<P>
+在一个节点中，一个属性只允许出现一次，如，在一个节点中不能出现两个注释属性：
+<PRE>... ;  C[comment1]  B  [dg]  C[comment2] ; ...</PRE>
+是一个错误。
+<P>
+每个属性具有属性类型。属性类型用于限制属性的位置，例如属性允许出现在哪些节点中，哪些属性允许出现在一个节点中组合使用。
+
+<A NAME="2.2.1"><H3>2.2.1. 属性的类型 (目前有5类):</H3></A>
+
+<PRE><B>走子</B>	走子属性描述一个走子，而非在某个位置放置一子。
+	走子属性不允许和设置属性处于同一个节点中。
+	注意：在根节点中包含走子属性是不好的风格。
+	(尽管这样不是被禁止的)
+
+<B>设置</B>	设置属性描述在某个位置放置一子。
+	设置属性不允许和走子属性处于同一个节点中。
+
+<B>根</B>	根属性只能出现在根结点中。
+	根节点是<A HREF="#ebnf-def">对局树</A>中第一个节点, 即在一个<A HREF="#ebnf-def">多对局集</A>中引导一个具有多个子节点的对局的节点。(例如，并非处于一个对局树中的另一个对局树分支)。
+	它们定义一些全局的“特性”例如棋盘大小、比赛类型、使用的文件格式等等。
+
+<B>对局信息</B>	对局信息属性提供有关对局的一些信息(例如对局者、地点、时间、内容、结果、规则等等).
+	这些属性通常处于根节点中。
+	当把一个对局并入一个<A HREF="#ebnf-def">多对局集中</A>，对局信息属性则处于第一个与其它对局区分开的节点中。
+
+        包含对局信息属性的节点被称为对局信息节点。
+	在一个对局树的任何一个路径中只能有一个对局信息节点。
+	例如，如果某个对局信息属性出现在一个节点中，那么该属性不允许出现在下述的任何一个节点中:
+        a) 从根节点到这个节点。
+        b) 此节点的子树中的节点。
+
+<B>无类型</B>	无类型。这些属性没有特殊的类型，允许出现在<A HREF="#ebnf-def">多对局集</A>中的任何位置。
+</PRE>
+
+因为走子属性和设置属性完全不同，所以节点也被分为两类：走子节点和设置节点。这对于数据库、与ISHI格式进行格式转换和一些其它应用很重要。
+
+<A NAME="2.2.2"><H3>2.2.2. 属性的特性 (目前仅有1项)</H3></A>
+
+<PRE><B><A NAME="inherit">后继性</A></B>
+	具有后继性的属性不仅影响包含此属性的节点而且影响该节点的所有的后继子节点直到另一个设置或者设置被清除。
+	就是说，一旦设置了该属性，所有该节点的子节点都继承了这个具有后继性特性的属性。
+	例如，属性 VW 限制了棋盘可见到区域，不仅限制了当前节点的棋盘可见区域，而且包括所有后继的节点。
+	这样，出现在一个分支开始处的属性 VW 对于整个分支都有效。
+	继承的停止，如果另一个属性出现，则新的属性值有效，或者属性值被清除，典型的方式是使用空值，例如 VW[] 。
+</PRE>
+
+<A NAME="2.2.3"><H3>2.2.3. 如何处理未知和不规范的属性</H3></A>
+
+<UL>
+<LI>未知属性及其属性值应当被保留。<BR>
+如果一个应用软件不能保留未知属性，那么应当显示一条警告信息。
+<LI>对局信息属性如有错误而无法纠正，则应当保留。
+<LI>除此以外的属性如有错误而无法纠正，则应当删除。<BR>
+应用软件如果删除了错误的属性，应当显示一条警告信息。
+</UL>
+
+<A NAME="2.2.4"><H3>2.2.4. 专用的属性</H3></A>
+
+应用软件可以定义它们专用的属性。须符合下列规范。
+<P><B>属性标志符:</B> 专用属性 <B>必须不能</B> 使用已经被标准属性使用过的标志符。你必须使用一个新的标志符。标志符应当由一个或两个大写组成。SGF 不限制超过两个字母的标志符的使用，但可能导致一些应用软件的中断。
+<P><B>属性值:</B> 专用属性可以使用本文定义的值类型，或者使用它们自己定义的专用值类型。如果使用专用值类型，应用软件必须在<B>所有的</B> <TT>"]"</TT>前加上转义符 <TT>"\"</TT>。否则将导致文件不可解析。如果值类型由两个简单类型组成，那么建议你的应用软件使用<B>组合</B>类型。
+
+<P>
+<HR SIZE=10 NOSHADE>
+
+<A NAME="types"><H1>3. <span lang="zh-cn">属性值类型</span></H1></A>
+
+<TABLE BORDER=2><TR><TD BGCOLOR=#efefff>
+<PRE>  <span lang="zh-cn">大写字母</span>   = "A".."Z"
+  <span lang="zh-cn">数字</span> <span lang="zh-cn">    </span>  = "0".."9"
+  <span lang="zh-cn">无值</span>       = ""
+
+  <span lang="zh-cn">数    </span>     = [("+"|"-")] <span lang="zh-cn">数字</span> { <span lang="zh-cn">数字</span> }
+  <span lang="zh-cn">实数</span>       = <span lang="zh-cn">数</span> ["." <span lang="zh-cn">数字</span> { <span lang="zh-cn">数字</span> }]
+
+  <span lang="zh-cn">程度  </span>     = ("1" | "2")
+  <span lang="zh-cn">颜色</span>  <span lang="zh-cn"> </span>    = ("B" | "W")
+
+  <span lang="zh-cn">单文本     </span>= { 任意字符 (详见下文) }
+  <span lang="zh-cn">文本</span>       = { 任意字符 (详见下文) }
+
+  <span lang="zh-cn">点</span>      = <I>由各棋类专门规定</I>
+  <span lang="zh-cn">走子</span>       = <I>由各棋类专门规定</I>
+  <span lang="zh-cn">棋子</span>      = <I>由各棋类专门规定</I>
+
+  <span lang="zh-cn">组合值</span>    = <I>值类型</I> ":" <I>值类型</I>
+</PRE>
+</TD></TABLE>
+
+<A NAME="double"><H2>3.1. <span lang="zh-cn">程度</span></H2></A>
+
+程度的值被用于描述一个属性的程度。被称为程度是因为它的值只有两个：普通的和强调的。
+值为 '1' 的意思是普通的，'2' 的意思是强调的。
+<BR>例如:
+<BR>GB[1] 可被显示为：黑好
+<BR>GB[2] 可被显示为：黑大好
+
+<A NAME="text"><H2>3.2. 文本</H2></A>
+
+文本是一种格式化的文本。空白字符例如换行符等被转换为空格 (例如制表符、垂直制表符等)
+<P>
+<B>格式化</B>:<BR>
+<I>软换行:</I> 紧跟在 <TT>"\"</TT> 后面的换行符
+(软换行被转换成 <TT>""</TT>, 就是说，被删除了)<BR>
+<I>硬换行:</I> 任何其它情况下的换行符
+<P>
+<B>注意</B>:
+一个简单的换行在不同的系统下有表示方式不同，例如
+在DOS下，换行符用<TT>"LFCR"</TT> 表示，而在Unix下换行符用 <TT>"LF"</TT> 表示。
+一个应用软件应当能很好地处理下列的全部换行符:
+LF, CR, LFCR, CRLF.<BR>
+<P>
+应用软件必须能处理任意长度的文本。
+文本应当被原样显示，超出显示范围的过长的部分可能被遮盖。
+<P>
+<B>转义:</B> <TT>"\"</TT> 是转义符。任何紧跟在 <TT>"\"</TT> 后面的字符将被逐字地插入 (例外情况: 空白字符仍然被转换成空格!)。
+当在文本中使用 <TT>"]"</TT>,<TT>"\"</TT> 和 <TT>":"</TT> (在压缩数据类型中除外) 等字符时必须被转义。
+
+<H3>3.2.1. 举例:</H3>
+
+<PRE>C[Meijin NR: yeah, k4 is won\
+derful
+sweat NR: thank you! :\)
+dada NR: yup. I like this move too. It's a move only to be expected from a pro. I really like it :)
+jansteen 4d: Can anyone\
+ explain [me\] k4?]</PRE>
+应该被显示为:
+<PRE>Meijin NR: yeah, k4 is wonderful
+sweat NR: thank you! :)
+dada NR: yup. I like this move too. It's a move only to be expected
+from a pro. I really like it :)
+jansteen 4d: Can anyone explain [me] k4?</PRE>
+
+<A NAME="simpletext"><H2>3.3. 单文本</H2></A>
+
+单文本是一个简单的字符串。空白字符必须被转换成空格，就是说，只有一行！应用软件必须能够处理任意长度的单文本。
+<P>
+<B>格式化</B>: 紧跟在 <TT>"\"</TT> 后面的换行符被转换成 <TT>""</TT>, 就是说，被删除了 (与文本类型相同)。其它换行符被转换为空格 (没有新行被显示!!)。
+<P>
+<B>转义</B> (与文本类型相同): <TT>"\"</TT> 是转义符。任何紧跟在 <TT>"\"</TT> 后面的字符将被逐字地插入 (例外情况: 空白字符仍然被转换成空格!)。
+当在文本中使用 <TT>"]"</TT>,<TT>"\"</TT> 和 <TT>":"</TT> (在压缩数据类型中除外) 等字符时必须被转义。
+
+
+<A NAME="stone"><H2>3.4. 棋子</H2></A>
+
+此类型用于指定放置棋子的点或片。如果一个棋类不区分棋子，例如围棋(GM[1])，棋子则被简化为点(点的说明见下文)，例如“棋子阵列
+”被简化为“点阵”。<BR>
+<B>注意:</B> 如果属性值允许使用“棋子列表”将被简化为“点阵”。
+
+<UL>
+<LI><I>围棋, Othello, Gomuku, Renju:</I> 棋子被简化为点
+<LI><I>国际象棋</I>
+<LI><I>Nine Men's Morris</I>
+<LI><I>中国象棋</I>
+<LI><I>Shogi</I>
+<LI><I>Lines of Action, Hex:</I> Stone becomes Point
+<LI><I>Amazons</I>
+</UL>
+
+<A NAME="move/pos"><H2>3.5. 走子和点</H2></A>
+
+这两个类型因不同的棋类而定。
+<UL>
+<LI><A HREF="http://go.chengfan.info/static/sgf_cn/go.html#types">围棋</A>
+<LI>Othello
+<LI>国际象棋
+<LI>Gomoku, Renju
+<LI>Nine Men's Morris
+<LI>中国象棋
+<LI>Shogi
+<LI>Lines of Action
+<LI>Hex
+<LI>Amazons
+</UL>
+
+<A NAME="3.5.1"><H3>3.5.1. 压缩点阵</H3></A>
+
+此类型“点阵”可被压缩。<BR>
+压缩的方法是指定一个矩形区域来取代列出矩形区域内的所有点。矩形由该矩形的左上角和右下角两个点来指定。
+<PRE><B>定义:</B>
+<I>点阵</I>: (点 | 点 ":" 点)
+压缩点阵类型中的第一个点指定矩形的左上角，第二个点指定矩形的右下角。
+1x1 矩形是合法的 - 即是单个点的点阵。
+</PRE>
+点阵的定义允许由单个的点 [xy] 或矩形 [ul:lr] 构成的按任意次序的组合。另外，点只能被指定一次，就是说，重复和交叠是被禁止的。
+<P>
+详细情况请看 <A HREF="DD_VW.html">例子</A>.
+<P>
+
+</BODY>
+</HTML>

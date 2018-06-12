@@ -1,0 +1,806 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0043)properties.html -->
+<HTML><HEAD><TITLE>SGF properties (FF[4])</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content="Microsoft FrontPage 5.0" name=GENERATOR></HEAD>
+<BODY aLink=#ff0000 bgColor=#ffffff link=#0000ff text=#000000 vLink=#ff0000>
+
+<IMG 
+alt="[SGF FF[4] - Smart Game Format]" border=0 
+src="head.gif" width="263" height="26"> <I>最后更新: 2003-10-16(原文last updated: 2001-8-12)</I> 
+<H1>目录</H1>
+<TABLE border=1>
+  <TBODY>
+  <TR>
+    <TD bgColor=#efffff>走子属性 
+    <TD><A href="http://go.chengfan.info/static/sgf_cn/properties.html#B">B</A>(Black,黑走子), <A 
+      href="http://go.chengfan.info/static/sgf_cn/properties.html#KO">KO</A>(KO,强制走子), <A 
+      href="http://go.chengfan.info/static/sgf_cn/properties.html#MN">MN</A>(set Move Number,设置手数), <A 
+      href="http://go.chengfan.info/static/sgf_cn/properties.html#W">W</A>(White,白走子) 
+  <TR>
+    <TD bgColor=#efffff>设置属性 
+    <TD><A href="http://go.chengfan.info/static/sgf_cn/properties.html#AB">AB</A>(Add Black,增加黑子), <A 
+      href="http://go.chengfan.info/static/sgf_cn/properties.html#AE">AE</A>(Add Empty,删除棋子), <A 
+      href="http://go.chengfan.info/static/sgf_cn/properties.html#AW">AW</A>(Add White,增加白子), <A 
+      href="http://go.chengfan.info/static/sgf_cn/properties.html#PL">PL</A>(PLayer to play,轮谁走) 
+  <TR>
+    <TD bgColor=#efffff>节点注释属性 
+    <TD><A href="http://go.chengfan.info/static/sgf_cn/properties.html#C">C</A>(Comment,评论), <A 
+      href="http://go.chengfan.info/static/sgf_cn/properties.html#DM">DM</A>(Even position,两分), <A 
+      href="http://go.chengfan.info/static/sgf_cn/properties.html#GB">GB</A>(Good for Black,黑好), <A 
+      href="http://go.chengfan.info/static/sgf_cn/properties.html#GW">GW</A>(Good for White,白好), <A 
+      href="http://go.chengfan.info/static/sgf_cn/properties.html#HO">HO</A>(HOtspot,热点), <A 
+      href="http://go.chengfan.info/static/sgf_cn/properties.html#N">N</A>(Nodename,给节点命名), <A 
+      href="http://go.chengfan.info/static/sgf_cn/properties.html#UC">UC</A>(UnClear postion,形势不明), <A 
+      href="http://go.chengfan.info/static/sgf_cn/properties.html#V">V</A>(Value,形势判断) 
+  <TR>
+    <TD bgColor=#efffff>走子注释属性 
+    <TD><A href="http://go.chengfan.info/static/sgf_cn/properties.html#BM">BM</A>(Bad Move,恶手), <A 
+      href="http://go.chengfan.info/static/sgf_cn/properties.html#DO">DO</A>(DOubtful,疑问手), <A 
+      href="http://go.chengfan.info/static/sgf_cn/properties.html#IT">IT</A>(INteresting,有趣手), <A 
+      href="http://go.chengfan.info/static/sgf_cn/properties.html#TE">TE</A>(TEsuji或Good Move,手筋或妙手) 
+  <TR>
+    <TD bgColor=#efffff>标记属性 
+    <TD><A href="http://go.chengfan.info/static/sgf_cn/properties.html#AR">AR</A>(ARrow,箭头), <A 
+      href="http://go.chengfan.info/static/sgf_cn/properties.html#CR">CR</A>(CiRcle,圆形), <A 
+      href="http://go.chengfan.info/static/sgf_cn/properties.html#DD">DD</A>(Dim position,模糊变虚), <A 
+      href="http://go.chengfan.info/static/sgf_cn/properties.html#LB">LB</A>(LaBel,棋盘标签), <A 
+      href="http://go.chengfan.info/static/sgf_cn/properties.html#LN">LN</A>(LiNe,直线), <A 
+      href="http://go.chengfan.info/static/sgf_cn/properties.html#MA">MA</A>(MArk,X形记号), <A 
+      href="http://go.chengfan.info/static/sgf_cn/properties.html#SL">SL</A>(SeLected,选择), <A 
+      href="http://go.chengfan.info/static/sgf_cn/properties.html#SQ">SQ</A>(SQuare,方块), <A 
+      href="http://go.chengfan.info/static/sgf_cn/properties.html#TR">TR</A>(TRiangle,三角) 
+  <TR>
+    <TD bgColor=#efffff>根属性 
+    <TD><A href="http://go.chengfan.info/static/sgf_cn/properties.html#AP">AP</A>(APplication,应用软件), <A 
+      href="http://go.chengfan.info/static/sgf_cn/properties.html#CA">CA</A>(ChArset,字符集), <A 
+      href="http://go.chengfan.info/static/sgf_cn/properties.html#FF">FF</A>(File Format,文件格式), <A 
+      href="http://go.chengfan.info/static/sgf_cn/properties.html#GM">GM</A>(GaMe,对局类别), <A 
+      href="http://go.chengfan.info/static/sgf_cn/properties.html#ST">ST</A>(STyle,分支显示风格), <A 
+      href="http://go.chengfan.info/static/sgf_cn/properties.html#SZ">SZ</A>(SiZe,棋盘大小) 
+  <TR>
+    <TD bgColor=#efffff>对局信息属性 
+    <TD><A href="http://go.chengfan.info/static/sgf_cn/properties.html#AN">AN</A>(ANnotator,注解者), <A 
+      href="http://go.chengfan.info/static/sgf_cn/properties.html#BR">BR</A>(Black Rank,执黑者等级), <A 
+      href="http://go.chengfan.info/static/sgf_cn/properties.html#BT">BT</A>(Black Team,执黑者队名), <A 
+      href="http://go.chengfan.info/static/sgf_cn/properties.html#CP">CP</A>(CoPyright,版权), <A 
+      href="http://go.chengfan.info/static/sgf_cn/properties.html#DT">DT</A>(DaTe,对局日期), <A 
+      href="http://go.chengfan.info/static/sgf_cn/properties.html#EV">EV</A>(EVent name,赛事名称), <A 
+      href="http://go.chengfan.info/static/sgf_cn/properties.html#GN">GN</A>(Game Name,对局名称), <A 
+      href="http://go.chengfan.info/static/sgf_cn/properties.html#GC">GC</A>(Game Comment,对局评论), <A 
+      href="http://go.chengfan.info/static/sgf_cn/properties.html#ON">ON</A>(OpeNing name,开局名称), <A 
+      href="http://go.chengfan.info/static/sgf_cn/properties.html#OT">OT</A>(OverTime,读秒方式), <A 
+      href="http://go.chengfan.info/static/sgf_cn/properties.html#PB">PB</A>(Player Black,执黑者), <A 
+      href="http://go.chengfan.info/static/sgf_cn/properties.html#PC">PC</A>(PlaCe,对局地点), <A 
+      href="http://go.chengfan.info/static/sgf_cn/properties.html#PW">PW</A>(Player White,执白者), <A 
+      href="http://go.chengfan.info/static/sgf_cn/properties.html#RE">RE</A>(REsult,对局结果), <A 
+      href="http://go.chengfan.info/static/sgf_cn/properties.html#RO">RO</A>(ROunt,对局轮次), <A 
+      href="http://go.chengfan.info/static/sgf_cn/properties.html#RU">RU</A>(RUles,对局规则), <A 
+      href="http://go.chengfan.info/static/sgf_cn/properties.html#SO">SO</A>(SOurce,棋谱来源), <A 
+      href="http://go.chengfan.info/static/sgf_cn/properties.html#TM">TM</A>(TiMelimit,对局时限), <A 
+      href="http://go.chengfan.info/static/sgf_cn/properties.html#US">US</A>(USer,录入者), <A 
+      href="http://go.chengfan.info/static/sgf_cn/properties.html#WR">WR</A>(White Rank,执白者等级), <A 
+      href="http://go.chengfan.info/static/sgf_cn/properties.html#WT">WT</A>(White Team,执白者队名) 
+  <TR>
+    <TD bgColor=#efffff>时间属性 
+    <TD><A href="http://go.chengfan.info/static/sgf_cn/properties.html#BL">BL</A>(Black time Left,执黑者剩余时间), <A 
+      href="http://go.chengfan.info/static/sgf_cn/properties.html#OB">OB</A>(Ot stone Black,执黑者在读秒期限内尚需完成的手数), <A 
+      href="http://go.chengfan.info/static/sgf_cn/properties.html#OW">OW</A>(Ot stone White,执白者在读秒期限内尚需完成的手数), <A 
+      href="http://go.chengfan.info/static/sgf_cn/properties.html#WL">WL</A>(White time Left,执白者剩余时间) 
+  <TR>
+    <TD bgColor=#efffff>其它未被分类的属性 
+    <TD><A href="http://go.chengfan.info/static/sgf_cn/properties.html#FG">FG</A>(FiGure,图形选项), <A 
+      href="http://go.chengfan.info/static/sgf_cn/properties.html#PM">PM</A>(Print Manner,打印方式), <A 
+      href="http://go.chengfan.info/static/sgf_cn/properties.html#VW">VW</A>(VieW,可视区域) 
+</TD></TR></TBODY></TABLE>
+<P>
+<HR noShade SIZE=10>
+
+<H1>SGF 属性 (FF[4])</H1>
+<H2>走子属性</H2>
+<PRE>
+<A name=B><B>属性:</B>	B</A>
+<B>属性值:</B>	<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#move/pos">走子</A>
+<B>属性类型:</B>	走子
+<B>功能:</B>	执行一个黑走子。在实战<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#ebnf-def">对局集</A>中这是最常用的属性之一。
+		只要该属性在句法上是正确的，走子就应当被执行，即使该走子不符合规则（例如由KO属性指定的强制走子）。
+		参看<A href="http://go.chengfan.info/static/sgf_cn/go.html#execute move">如何执行一个围棋走子</A>。
+		属性 B 和属性 W 不能处于同一个节点中。
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#W">W</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#KO">KO</A>
+
+<A name=KO><B>属性:</B>	KO</A>
+<B>属性值:</B>	<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#types">无值</A>
+<B>属性类型:</B>	走子
+<B>功能:</B>	执行一个由属性 B 或 W 指定的走子，即使该走子不符合规则。
+		这是一个可选的属性，SGF阅读器本身应当执行所有的走子。
+		设立该属性是为了使其它应用软件（如计算机对局者）可以更容易处理不符合规则的走子。
+		在包含属性 KO 的节点中，如果没有黑走子或白走子，则是非法的。
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#W">W</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#B">B</A>
+
+<A name=MN><B>属性:</B>	MN</A>
+<B>属性值:</B>	<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#types">数</A>
+<B>属性类型:</B>	走子
+<B>功能:</B>	设定手数的数值，就是指定该节点中走子具有这个确定的手数。
+		该属性对于分支或打印很有用。
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#B">B</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#W">W</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#FG">FG</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#PM">PM</A>
+
+<A name=W><B>属性:</B>	W</A>
+<B>属性值:</B>	<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#move/pos">走子</A>
+<B>属性类型:</B>	走子
+<B>功能:</B>	执行一个白走子。在实战<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#ebnf-def">对局集</A>中这是最常用的属性之一。
+		只要该属性在句法上是正确的，走子就应当被执行，即使该走子不符合规则（例如由KO属性指定的强制走子）。
+		参看<A href="http://go.chengfan.info/static/sgf_cn/go.html#execute move">如何执行一个围棋走子</A>。
+		属性 B 和属性 W 不能处于同一个节点中。
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#B">B</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#KO">KO</A>
+</PRE>
+<HR noShade>
+
+<H2>设置属性</H2>
+<H3>限制</H3>属性 AB, AW 和 AE 指定的点必须唯一，就是说，在一个节点中在相同的点上放置不同色的棋子是非法的。<BR>
+不能使用属性 AB, AW 和 AE 改变棋盘，就是说，在已经有黑子的点上再使用属性 AB[] 放置一枚黑子是不好的风格。应用软件会删除这个值并且给出一条警告。
+<PRE><A name=AB><B>属性:</B>	AB</A>
+<B>属性值:</B>	由<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#stone">棋子</A>组成的列表
+<B>属性类型:</B>	设置
+<B>功能:</B>	在棋盘上增加黑子。
+		该属性可用于设置棋形或问题。
+		增加黑子就是在指定的点用黑子“覆盖”，无论该位置之前是什么情况。
+		增加棋子不导致任何提子，也不导致任何其它吃子（例如自杀）。
+		这样可能在棋盘上产生非法的棋子位置。
+		被指定的点必须唯一。
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#AW">AW</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#AE">AE</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#PL">PL</A>
+
+<A name=AE><B>属性:</B>	AE</A>
+<B>属性值:</B>	list of <A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#move/pos">点</A>
+<B>属性类型:</B>	设置
+<B>功能:</B>	清除棋盘上指定位置的棋子。
+		该属性可用于设置棋形或问题。
+		清除棋子就是在指定的点用无子“覆盖”，无论该位置之前是什么情况。
+		清除棋子不计入被提子数。
+		被指定的点必须唯一。
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#AB">AB</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#AW">AW</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#PL">PL</A>
+
+<A name=AW><B>属性:</B>	AW</A>
+<B>属性值:</B>	list of <A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#stone">棋子</A>
+<B>属性类型:</B>	设置
+<B>功能:</B>	在棋盘上增加白子。
+		该属性可用于设置棋形或问题。
+		增加白子就是在指定的点用白子“覆盖”，无论该位置之前是什么情况。
+		增加棋子不导致任何提子，也不导致任何其它吃子（例如自杀）。
+		这样可能在棋盘上产生非法的棋子位置。
+		被指定的点必须唯一。
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#AB">AB</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#AE">AE</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#PL">PL</A>
+
+<A name=PL><B>属性:</B>	PL</A>
+<B>属性值:</B>	<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#types">颜色</A>
+<B>属性类型:</B>	设置
+<B>功能:</B>	属性 PL 描述轮谁走子。
+		该属性可用于设置位置或问题。
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#AE">AE</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#AB">AB</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#AW">AW</A>
+</PRE>
+<HR noShade>
+
+<H2>节点注释属性</H2><PRE><A name=C><B>属性:</B>	C</A>
+<B>属性值:</B>	<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#text">文本</A>
+<B>属性类型:</B>	-
+<B>功能:</B>	提供该节点的一段评论文字。
+		Provides a comment text for the given node. The purpose of
+		providing both a node name and a comment is to have a short
+		identifier like "doesn't work" or "Dia. 15" that can be
+		displayed directly with the properties of the node, even if
+		the comment is turned off or shown in a separate window.
+		See <A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#text">text-type</A> for more info.
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#N">N</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#ST">ST</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#V">V</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#UC">UC</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#DM">DM</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#HO">HO</A>
+
+<A name=DM><B>属性:</B>	DM</A>
+<B>属性值:</B>	<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#double">程度</A>
+<B>属性类型:</B>	-
+<B>功能:</B>	形势是两分。
+		SGF 阅读器应当显示一条信息。
+		The position is even. SGF viewers should display a
+		message. This property may indicate main variations in
+		opening libraries (joseki) too. Thus DM[2] indicates an
+		even result for both players and that this is a main
+		variation of this joseki/opening.
+		This property must not be mixed with UC, GB or GW
+		within a node.
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#UC">UC</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#GW">GW</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#GB">GB</A>
+
+<A name=GB><B>属性:</B>	GB</A>
+<B>属性值:</B>	<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#double">程度</A>
+<B>属性类型:</B>	-
+<B>功能:</B>	黑好。
+		SGF 阅读器应当显示一条信息。
+		Something good for black. SGF viewers should display a
+		message. The property is not related to any specific place
+		on the board, but marks the whole node instead.
+		GB must not be mixed with GW, DM or UC within a node.
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#GW">GW</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#C">C</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#UC">UC</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#DM">DM</A>
+
+<A name=GW><B>属性:</B>	GW</A>
+<B>属性值:</B>	<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#double">程度</A>
+<B>属性类型:</B>	-
+<B>功能:</B>	白好。
+		SGF 阅读器应当显示一条信息。
+		Something good for white. SGF viewers should display a
+		message. The property is not related to any specific place
+		on the board, but marks the whole node instead.
+		GW must not be mixed with GB, DM or UC within a node.
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#GB">GB</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#C">C</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#UC">UC</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#DM">DM</A>
+
+<A name=HO><B>属性:</B>	HO</A>
+<B>属性值:</B>	<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#double">程度</A>
+<B>属性类型:</B>	-
+<B>功能:</B>	Node is a 'hotspot', i.e. something interesting (e.g.
+		node contains a game-deciding move).
+		SGF viewers should display a message.
+		The property is not related to any specific place
+		on the board, but marks the whole node instead.
+		Sophisticated applications could implement the navigation
+		command next/previous hotspot.
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#GB">GB</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#GW">GW</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#C">C</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#UC">UC</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#DM">DM</A>
+
+<A name=N><B>属性:</B>	N</A>
+<B>属性值:</B>	<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#simpletext">单文本</A>
+<B>属性类型:</B>	-
+<B>功能:</B>	Provides a name for the node. For more info have a look at
+		the <A href="http://go.chengfan.info/static/sgf_cn/properties.html#C">C</A>-property.
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#C">C</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#ST">ST</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#V">V</A>
+
+<A name=UC><B>属性:</B>	UC</A>
+<B>属性值:</B>	<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#double">程度</A>
+<B>属性类型:</B>	-
+<B>功能:</B>	The position is unclear. SGF viewers should display a
+		message. This property must not be mixed with DM, GB or GW
+		within a node.
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#DM">DM</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#GW">GW</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#GB">GB</A>
+
+<A name=V><B>属性:</B>	V</A>
+<B>属性值:</B>	<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#types">实数</A>
+<B>属性类型:</B>	-
+<B>功能:</B>	Define a value for the node.  Positive values are good for
+		black, negative values are good for white.
+		The interpretation of particular values is game-specific.
+		In Go, this is the estimated score.
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#C">C</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#N">N</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#RE">RE</A>
+</PRE>
+<HR noShade>
+
+<H2>走子注释属性</H2>
+<H3>Restrictions</H3>Move annotation properties without a move (B[] or W[]) 
+within the same node are senseless and therefore illegal. Applications should 
+delete such properties and issue a warning. <BR>BM, TE, DO and IT are mutual 
+exclusive, i.e. they must not be mixed within a single node. <PRE><A name=BM><B>属性:</B>	BM</A>
+<B>属性值:</B>	<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#double">程度</A>
+<B>属性类型:</B>	走子
+<B>功能:</B>	The played move is bad.
+		Viewers should display a message.
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#TE">TE</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#DO">DO</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#IT">IT</A>
+
+<A name=DO><B>属性:</B>	DO</A>
+<B>属性值:</B>	<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#types">无值</A>
+<B>属性类型:</B>	走子
+<B>功能:</B>	The played move is doubtful.
+		Viewers should display a message.
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#BM">BM</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#TE">TE</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#IT">IT</A>
+
+<A name=IT><B>属性:</B>	IT</A>
+<B>属性值:</B>	<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#types">无值</A>
+<B>属性类型:</B>	走子
+<B>功能:</B>	The played move is interesting.
+		Viewers should display a message.
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#BM">BM</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#DO">DO</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#TE">TE</A>
+
+<A name=TE><B>属性:</B>	TE</A>
+<B>属性值:</B>	<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#double">程度</A>
+<B>属性类型:</B>	走子
+<B>功能:</B>	The played move is a tesuji (good move).
+		Viewers should display a message.
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#BM">BM</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#DO">DO</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#IT">IT</A>
+</PRE>
+<HR noShade>
+
+<H2>标记属性</H2>
+<H3>Restrictions</H3>CR, MA, SL, SQ and TR points must be unique, i.e. it's 
+illegal to have two or more of these markups on the same point within a node. <PRE><A name=AR><B>属性:</B>	AR</A>
+<B>属性值:</B>	list of composed <A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#move/pos">点</A> ':' <A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#move/pos">点</A>
+<B>属性类型:</B>	-
+<B>功能:</B>	Viewers should draw an arrow pointing FROM the first point
+		TO the second point.
+		It's illegal to specify the same arrow twice,
+		e.g. (Go) AR[aa:bb][aa:bb]. Different arrows may have the same
+		starting or ending point though.
+		It's illegal to specify a one point arrow, e.g. AR[cc:cc]
+		as it's impossible to tell into which direction the
+		arrow points.
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#TR">TR</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#CR">CR</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#LB">LB</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#SL">SL</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#MA">MA</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#SQ">SQ</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#LN">LN</A>
+
+<A name=CR><B>属性:</B>	CR</A>
+<B>属性值:</B>	list of <A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#move/pos">点</A>
+<B>属性类型:</B>	-
+<B>功能:</B>	Marks the given points with a circle.
+		Points must be unique.
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#TR">TR</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#MA">MA</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#LB">LB</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#SL">SL</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#AR">AR</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#SQ">SQ</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#LN">LN</A>
+
+<A name=DD><B>属性:</B>	DD</A>
+<B>属性值:</B>	elist of <A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#move/pos">点</A>
+<B>属性类型:</B>	<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#inherit">后继性</A>
+<B>功能:</B>	Dim (grey out) the given points.
+			Have a look at the <A href="DD_VW.html">picture</A> to get an idea.
+			DD[] clears any setting, i.e. it undims everything.
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#VW">VW</A>
+
+<A name=LB><B>属性:</B>	LB</A>
+<B>属性值:</B>	list of composed <A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#move/pos">点</A> ':' <A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#simpletext">单文本</A>
+<B>属性类型:</B>	-
+<B>功能:</B>	Writes the given text on the board. The text should be
+		centered around the given point. Note: there's no longer
+		a restriction to the length of the text to be displayed.
+		Have a look at the <A href="http://go.chengfan.info/static/sgf_cn/examples/index.html">FF4 example file</A> on possibilities
+		to display long labels (pictures <A href="http://go.chengfan.info/static/sgf_cn/examples/05.gif">five</A> and <A href="http://go.chengfan.info/static/sgf_cn/examples/06.gif">six</A>).
+		Points must be unique.
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#TR">TR</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#CR">CR</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#MA">MA</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#SL">SL</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#AR">AR</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#SQ">SQ</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#LN">LN</A>
+
+<A name=LN><B>属性:</B>	LN</A>
+<B>属性值:</B>	list of composed <A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#move/pos">点</A> ':' 点
+<B>属性类型:</B>	-
+<B>功能:</B>	Applications should draw a simple line form one point
+		to the other.
+		It's illegal to specify the same line twice,
+		e.g. (Go) LN[aa:bb][aa:bb]. Different lines may have the same
+		starting or ending point though.
+		It's illegal to specify a one point line, e.g. LN[cc:cc].
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#TR">TR</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#CR">CR</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#MA">MA</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#SL">SL</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#AR">AR</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#SQ">SQ</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#LB">LB</A>
+
+
+<A name=MA><B>属性:</B>	MA</A>
+<B>属性值:</B>	list of <A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#move/pos">点</A>
+<B>属性类型:</B>	-
+<B>功能:</B>	Marks the given points with an 'X'.
+		Points must be unique.
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#TR">TR</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#CR">CR</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#LB">LB</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#SL">SL</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#AR">AR</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#SQ">SQ</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#LN">LN</A>
+
+<A name=SL><B>属性:</B>	SL</A>
+<B>属性值:</B>	list of <A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#move/pos">点</A>
+<B>属性类型:</B>	-
+<B>功能:</B>	Selected points. Type of markup unknown
+		(though SGB inverts the colors of the given points).
+		Points must be unique.
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#TR">TR</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#CR">CR</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#LB">LB</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#MA">MA</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#AR">AR</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#LN">LN</A>
+
+
+<A name=SQ><B>属性:</B>	SQ</A>
+<B>属性值:</B>	list of <A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#move/pos">点</A>
+<B>属性类型:</B>	-
+<B>功能:</B>	Marks the given points with a square.
+		Points must be unique.
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#TR">TR</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#CR">CR</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#LB">LB</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#SL">SL</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#AR">AR</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#MA">MA</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#LN">LN</A>
+
+<A name=TR><B>属性:</B>	TR</A>
+<B>属性值:</B>	list of <A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#move/pos">点</A>
+<B>属性类型:</B>	-
+<B>功能:</B>	Marks the given points with a triangle.
+		Points must be unique.
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#MA">MA</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#CR">CR</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#LB">LB</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#SL">SL</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#AR">AR</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#LN">LN</A>
+</PRE>
+<HR noShade>
+
+<H2>根属性</H2><PRE><A name=AP><B>属性:</B>	AP</A>
+<B>属性值:</B>	composed <A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#simpletext">单文本</A> ":" <A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#simpletext">单文本</A>
+<B>属性类型:</B>	根
+<B>功能:</B>	Provides the name and version number of the application used
+		to create this <A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#ebnf-def">gametree</A>.
+		The name should be unique and must not be changed for
+		different versions of the same program.
+		The version number itself may be of any kind, but the format
+		used must ensure that by using an ordinary string-compare,
+		one is able to tell if the version is lower or higher
+		than another version number.
+		Here's the list of known applications and their names:
+
+		Application		     System	  Name
+		---------------------------  -----------  --------------------
+		[CGoban:1.6.2]		     Unix	  CGoban
+		[Hibiscus:2.1]		     Windows 95   Hibiscus Go Editor
+		[IGS:5.0]				  Internet Go Server
+		[Many Faces of Go:10.0]      Windows 95   The Many Faces of Go
+		[MGT:?]			     DOS/Unix	  MGT
+		[NNGS:?]		     Unix	  No Name Go Server
+		[Primiview:3.0]   	     Amiga OS3.0  Primiview
+		[SGB:?]			     Macintosh	  Smart Game Board
+		[SmartGo:1.0]		     Windows	  SmartGo
+
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#FF">FF</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#GM">GM</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#SZ">SZ</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#ST">ST</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#CA">CA</A>
+
+<A name=CA><B>属性:</B>	CA</A>
+<B>属性值:</B>	<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#simpletext">单文本</A>
+<B>属性类型:</B>	根
+<B>功能:</B>	Provides the used charset for SimpleText and Text type.
+		Default value is 'ISO-8859-1' aka 'Latin1'.
+		Only charset names (or their aliases) as specified in RFC 1345
+		(or updates thereof) are allowed.
+		Basically this field uses the same names as MIME messages in
+		their 'charset=' field (in Content-Type).
+		RFC's can be obtained via FTP from <A href="ftp://ds.internic.net/rfc/">DS.INTERNIC.NET</A>,
+		<A href="ftp://nis.nsf.net/internet/documents/rfc">NIS.NSF.NET</A>, <A href="ftp://wuarchive.wustl.edu/info/rfc">WUARCHIVE.WUSTL.EDU</A>, <A href="ftp://src.doc.ic.ac.uk/rfc">SRC.DOC.IC.AC.UK</A>
+		or <A href="ftp://ftp.imag.fr/pub/archive/IETF/rfc">ftp://ftp.imag.fr/pub/archive/IETF/rfc</A>.
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#FF">FF</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#C">C</A>, <A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#text">text type</A>
+
+<A name=FF><B>属性:</B>	FF</A>
+<B>属性值:</B>	<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#types">数</A> (range: 1-4)
+<B>属性类型:</B>	根
+<B>功能:</B>	Defines the used file format. For difference between those
+		formats have a look at the <A href="ff1_3/sgfhistory.html">history</A> of SGF.
+		Default value: 1
+		Applications must be able to deal with different file formats
+		within a <A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#ebnf-def">collection</A>.
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#GM">GM</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#SZ">SZ</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#ST">ST</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#AP">AP</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#CA">CA</A>
+
+<A name=GM><B>属性:</B>	GM</A>
+<B>属性值:</B>	<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#types">数</A> (range: 1-16)
+<B>属性类型:</B>	根
+<B>功能:</B>	Defines the type of game, which is stored in the current
+		<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#ebnf-def">gametree</A>. The property should help applications
+		to reject games, they cannot handle.
+		Valid numbers are: Go = 1, Othello = 2, chess = 3,
+		Gomoku+Renju = 4, Nine Men's Morris = 5, Backgammon = 6,
+		Chinese chess = 7, Shogi = 8, Lines of Action = 9,
+		Ataxx = 10, Hex = 11, Jungle = 12, Neutron = 13,
+		Philosopher's Football = 14, Quadrature = 15, Trax = 16,
+		Tantrix = 17, Amazons = 18, Octi = 19, Gess = 20.
+		Default value: 1
+		Different kind of games may appear within a <A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#ebnf-def">collection</A>.
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#FF">FF</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#SZ">SZ</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#ST">ST</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#AP">AP</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#CA">CA</A>
+
+<A name=ST><B>属性:</B>	ST</A>
+<B>属性值:</B>	<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#types">数</A> (range: 0-3)
+<B>属性类型:</B>	根
+<B>功能:</B>	Defines how variations should be shown (this is needed to
+		synchronize the comments with the variations). If ST is omitted
+		viewers should offer the possibility to change the mode online.
+		Basically most programs show variations in two ways:
+		as markup on the board (if the variation contains a move)
+		and/or as a list (in a separate window).
+		The style number consists two options.
+		1) show variations of successor node (children) (value: 0)
+		   show variations of current node   (siblings) (value: 1)
+		   affects markup &amp; list
+		2) do board markup         (value: 0)
+		   no (auto-) board markup (value: 2)
+		   affects markup only.
+		   Using no board markup could be used in problem collections
+		   or if variations are marked by subsequent properties.
+		   Viewers should take care, that the automatic variation
+		   board markup DOESN'T overwrite any markup of other
+		   properties.
+		The  final number is calculated by adding the values of each
+		option.	Example: 3 = no board markup/variations of current node
+				 1 = board markup/variations of current node
+		Default value: 0
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#C">C</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#FF">FF</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#GM">GM</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#SZ">SZ</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#AP">AP</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#CA">CA</A>
+
+<A name=SZ><B>属性:</B>	SZ</A>
+<B>属性值:</B>	(<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#types">数</A> | composed 数 ':' 数)
+<B>属性类型:</B>	根
+<B>功能:</B>	Defines the size of the board. If only a single value
+		is given, the board is a square; with two numbers given,
+		rectangular boards are possible.
+		If a rectangular board is specified, the first number specifies
+		the number of columns, the second provides the number of rows.
+		Square boards must not be defined using the compose type
+		value: e.g. SZ[19:19] is illegal.
+		The valid range for SZ is any size greater or equal to 1x1.
+		For Go games the maximum size is limited to 52x52.
+		Default value: game specific
+			       for Go: 19 (square board)
+			       for Chess: 8 (square board)
+		Different board sizes may appear within a <A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#ebnf-def">collection</A>.
+		See <A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#move/pos">move-/point-type</A> for more info.
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#FF">FF</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#GM">GM</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#ST">ST</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#AP">AP</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#CA">CA</A>
+</PRE>
+<HR noShade>
+
+<H2>对局信息属性</H2><PRE><A name=AN><B>属性:</B>	AN</A>
+<B>属性值:</B>	<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#simpletext">单文本</A>
+<B>属性类型:</B>	对局信息
+<B>功能:</B>	Provides the name of the person, who made the annotations
+		to the game.
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#US">US</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#SO">SO</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#CP">CP</A>
+
+<A name=BR><B>属性:</B>	BR</A>
+<B>属性值:</B>	<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#simpletext">单文本</A>
+<B>属性类型:</B>	对局信息
+<B>功能:</B>	Provides the rank of the black player.
+		For Go (GM[1]) the following format is recommended:
+		"..k" or "..kyu" for kyu ranks and
+		"..d" or "..dan" for dan ranks.
+		Go servers may want to add '?' for an uncertain rating and
+		'*' for an established rating.
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#PB">PB</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#BT">BT</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#WR">WR</A>
+
+<A name=BT><B>属性:</B>	BT</A>
+<B>属性值:</B>	<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#simpletext">单文本</A>
+<B>属性类型:</B>	对局信息
+<B>功能:</B>	Provides the name of the black team, if game was part of a
+		team-match (e.g. China-Japan Supermatch).
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#PB">PB</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#PW">PW</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#WT">WT</A>
+
+<A name=CP><B>属性:</B>	CP</A>
+<B>属性值:</B>	<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#simpletext">单文本</A>
+<B>属性类型:</B>	对局信息
+<B>功能:</B>	Any copyright information (e.g. for the annotations) should
+		be included here.
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#US">US</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#SO">SO</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#AN">AN</A>
+
+<A name=DT><B>属性:</B>	DT</A>
+<B>属性值:</B>	<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#simpletext">单文本</A>
+<B>属性类型:</B>	对局信息
+<B>功能:</B>	Provides the date when the game was played.
+		It is MANDATORY to use the ISO-standard format for DT.
+		Note: ISO format implies usage of the Gregorian calendar.
+		Syntax:
+		"YYYY-MM-DD" year (4 digits), month (2 digits), day (2 digits)
+		Do not use other separators such as "/", " ", "," or ".".
+		Partial dates are allowed:
+		"YYYY" - game was played in YYYY
+		"YYYY-MM" - game was played in YYYY, month MM
+		For games that last more than one day: separate other dates
+		by a comma (no spaces!); following shortcuts may be used:
+		"MM-DD" - if preceded by YYYY-MM-DD, YYYY-MM, MM-DD, MM or DD
+		"MM" - if preceded by YYYY-MM or MM
+		"DD" - if preceded by YYYY-MM-DD, MM-DD or DD
+		Shortcuts acquire the last preceding YYYY and MM (if
+		necessary).
+		Note: interpretation is done from left to right.
+		Examples:
+			1996-05,06 = played in May,June 1996
+			1996-05-06,07,08 = played on 6th,7th,8th May 1996
+			1996,1997 = played in 1996 and 1997
+			1996-12-27,28,1997-01-03,04 = played on 27th,28th
+			of December 1996 and on 3rd,4th January 1997
+		Note: it's recommended to use shortcuts whenever possible,
+		e.g. 1997-05-05,06 instead of 1997-05-05,1997-05-06
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#EV">EV</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#RO">RO</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#PC">PC</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#RU">RU</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#RE">RE</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#TM">TM</A>
+
+<A name=EV><B>属性:</B>	EV</A>
+<B>属性值:</B>	<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#simpletext">单文本</A>
+<B>属性类型:</B>	对局信息
+<B>功能:</B>	Provides the name of the event (e.g. tournament).
+		Additional information (e.g. final, playoff, ..)
+		shouldn't be included (see <A href="http://go.chengfan.info/static/sgf_cn/properties.html#RO">RO</A>).
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#GC">GC</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#RO">RO</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#DT">DT</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#PC">PC</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#RU">RU</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#RE">RE</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#TM">TM</A>
+
+<A name=GN><B>属性:</B>	GN</A>
+<B>属性值:</B>	<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#simpletext">单文本</A>
+<B>属性类型:</B>	对局信息
+<B>功能:</B>	Provides a name for the game. The name is used to
+		easily find games within a <A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#ebnf-def">collection</A>.
+		The name should therefore contain some helpful information
+		for identifying the game. 'GameName' could also be used
+		as the file-name, if a collection is split into
+		single files.
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#GC">GC</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#EV">EV</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#DT">DT</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#PC">PC</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#RO">RO</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#ID">ID</A>
+
+<A name=GC><B>属性:</B>	GC</A>
+<B>属性值:</B>	<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#text">文本</A>
+<B>属性类型:</B>	对局信息
+<B>功能:</B>	Provides some extra information about the following game.
+		The intend of GC is to provide some background information
+		and/or to summarize the game itself.
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#GN">GN</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#ON">ON</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#AN">AN</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#CP">CP</A>
+
+<A name=ON><B>属性:</B>	ON</A>
+<B>属性值:</B>	<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#simpletext">单文本</A>
+<B>属性类型:</B>	对局信息
+<B>功能:</B>	Provides some information about the opening played
+		(e.g. san-ren-sei, Chinese fuseki, etc.).
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#GN">GN</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#GC">GC</A>
+
+<A name=OT><B>属性:</B>	OT</A>
+<B>属性值:</B>	<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#simpletext">单文本</A>
+<B>属性类型:</B>	对局信息
+<B>功能:</B>	Describes the method used for overtime (byo-yomi).
+		Examples: "5 mins Japanese style, 1 move / min",
+			  "25 moves / 10 min".
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#TM">TM</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#BL">BL</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#WL">WL</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#OB">OB</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#OW">OW</A>
+
+<A name=PB><B>属性:</B>	PB</A>
+<B>属性值:</B>	<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#simpletext">单文本</A>
+<B>属性类型:</B>	对局信息
+<B>功能:</B>	Provides the name of the black player.
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#PW">PW</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#BT">BT</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#WT">WT</A>
+
+<A name=PC><B>属性:</B>	PC</A>
+<B>属性值:</B>	<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#simpletext">单文本</A>
+<B>属性类型:</B>	对局信息
+<B>功能:</B>	Provides the place where the games was played.
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#EV">EV</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#DT">DT</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#RO">RO</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#RU">RU</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#RE">RE</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#TM">TM</A>
+
+<A name=PW><B>属性:</B>	PW</A>
+<B>属性值:</B>	<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#simpletext">单文本</A>
+<B>属性类型:</B>	对局信息
+<B>功能:</B>	Provides the name of the white player.
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#PB">PB</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#BT">BT</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#WT">WT</A>
+
+<A name=RE><B>属性:</B>	RE</A>
+<B>属性值:</B>	<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#simpletext">单文本</A>
+<B>属性类型:</B>	对局信息
+<B>功能:</B>	Provides the result of the game. It is MANDATORY to use the
+		following format:
+		<I>"0"</I> (zero) or <I>"Draw"</I> for a draw (jigo),
+		<I>"B+" ["score"]</I> for a black win and
+		<I>"W+" ["score"]</I> for a white win
+		Score is optional (some games don't have a score e.g. chess).
+		If the score is given it has to be given as a real value,
+		e.g. "B+0.5", "W+64", "B+12.5"
+		Use <I>"B+R"</I> or <I>"B+Resign"</I> and <I>"W+R"</I> or <I>"W+Resign"</I> for a win by
+		resignation. Applications must not write "Black resigns".
+		Use <I>"B+T"</I> or <I>"B+Time"</I> and <I>"W+T"</I> or <I>"W+Time"</I> for a win on time,
+		<I>"B+F"</I> or <I>"B+Forfeit"</I> and <I>"W+F"</I> or <I>"W+Forfeit"</I> for a win by
+		forfeit,
+		<I>"Void"</I> for no result or suspended play and
+		<I>"?"</I> for an unknown result.
+
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#EV">EV</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#DT">DT</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#PC">PC</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#RO">RO</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#RU">RU</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#TM">TM</A>
+
+<A name=RO><B>属性:</B>	RO</A>
+<B>属性值:</B>	<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#simpletext">单文本</A>
+<B>属性类型:</B>	对局信息
+<B>功能:</B>	Provides round-number and type of round. It should be
+		written in the following way: RO[xx (tt)], where xx is the
+		number of the round and (tt) the type:
+		final, playoff, league, ...
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#EV">EV</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#DT">DT</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#PC">PC</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#RU">RU</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#RE">RE</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#TM">TM</A>
+
+<A name=RU><B>属性:</B>	RU</A>
+<B>属性值:</B>	<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#simpletext">单文本</A>
+<B>属性类型:</B>	对局信息
+<B>功能:</B>	Provides the used rules for this game.
+		Because there are many different rules, SGF requires
+		mandatory names only for a small set of well known rule sets.
+		Note: it's beyond the scope of this specification to give an
+		exact specification of these rule sets.
+		Mandatory names for Go (GM[1]):
+			"AGA" (rules of the American Go Association)
+			"GOE" (the Ing rules of Goe)
+			"Japanese" (the Nihon-Kiin rule set)
+			"NZ" (New Zealand rules)
+
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#EV">EV</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#DT">DT</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#PC">PC</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#RO">RO</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#RE">RE</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#TM">TM</A>
+
+<A name=SO><B>属性:</B>	SO</A>
+<B>属性值:</B>	<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#simpletext">单文本</A>
+<B>属性类型:</B>	对局信息
+<B>功能:</B>	Provides the name of the source (e.g. book, journal, ...).
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#US">US</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#AN">AN</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#CP">CP</A>
+
+<A name=TM><B>属性:</B>	TM</A>
+<B>属性值:</B>	<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#types">实数</A>
+<B>属性类型:</B>	对局信息
+<B>功能:</B>	Provides the time limits of the game.
+		The time limit is given in seconds.
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#EV">EV</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#DT">DT</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#PC">PC</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#RO">RO</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#RU">RU</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#RE">RE</A>
+
+<A name=US><B>属性:</B>	US</A>
+<B>属性值:</B>	<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#simpletext">单文本</A>
+<B>属性类型:</B>	对局信息
+<B>功能:</B>	Provides the name of the user (or program), who entered
+		the game.
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#SO">SO</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#AN">AN</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#CP">CP</A>
+
+<A name=WR><B>属性:</B>	WR</A>
+<B>属性值:</B>	<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#simpletext">单文本</A>
+<B>属性类型:</B>	对局信息
+<B>功能:</B>	Provides the rank of the white player. For recommended
+		format see <A href="http://go.chengfan.info/static/sgf_cn/properties.html#BR">BR</A>.
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#PW">PW</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#WT">WT</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#BR">BR</A>
+
+<A name=WT><B>属性:</B>	WT</A>
+<B>属性值:</B>	<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#simpletext">单文本</A>
+<B>属性类型:</B>	对局信息
+<B>功能:</B>	Provide the name of the white team, if game was part of a
+		team-match (e.g. China-Japan Supermatch).
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#PB">PB</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#PW">PW</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#BT">BT</A>
+</PRE>
+<HR noShade>
+
+<H2>时间属性</H2><PRE><A name=BL><B>属性:</B>	BL</A>
+<B>属性值:</B>	<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#types">实数</A>
+<B>属性类型:</B>	走子
+<B>功能:</B>	Time left for black, after the move was made.
+		Value is given in seconds.
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#TM">TM</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#OT">OT</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#WL">WL</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#OB">OB</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#OW">OW</A>
+
+<A name=OB><B>属性:</B>	OB</A>
+<B>属性值:</B>	<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#types">数</A>
+<B>属性类型:</B>	走子
+<B>功能:</B>	Number of black moves left (after the move of this node was
+		played) to play in this byo-yomi period.
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#TM">TM</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#OT">OT</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#BL">BL</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#WL">WL</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#OW">OW</A>
+
+<A name=OW><B>属性:</B>	OW</A>
+<B>属性值:</B>	<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#types">数</A>
+<B>属性类型:</B>	走子
+<B>功能:</B>	Number of white moves left (after the move of this node was
+		played) to play in this byo-yomi period.
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#TM">TM</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#OT">OT</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#BL">BL</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#WL">WL</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#OB">OB</A>
+
+<A name=WL><B>属性:</B>	WL</A>
+<B>属性值:</B>	<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#types">实数</A>
+<B>属性类型:</B>	走子
+<B>功能:</B>	Time left for white after the move was made.
+		Value is given in seconds.
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#TM">TM</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#OT">OT</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#BL">BL</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#OB">OB</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#OW">OW</A>
+</PRE>
+<HR noShade>
+
+<H2>其它未被分类的属性</H2><PRE><A name=FG><B>属性:</B>	FG</A>
+<B>属性值:</B>	<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#types">无值 | composition of 数 ":" SimpleText</A>
+<B>属性类型:</B>	-
+<B>功能:</B>	The figure property is used to divide a game into
+		different figures for printing: a new figure starts at the
+		node containing a figure property.
+		If the value is not empty then
+		- Simpletext provides a name for the diagram
+		- Number specifies some flags (for printing).
+		  These flags are:
+			- <I>coordinates</I> on/off (value: 0/1)
+			- <I>diagram name</I> on/off (value: 0/2)
+			- <I>list moves not shown in figure</I> on/off (value: 0/4)
+			  Some moves can't be shown in a diagram (e.g. ko
+			  captures in Go) - these moves may be listed as text.
+			- <I>remove captured stones</I> on/off (value: 0/256)
+			  'remove off' means: keep captured stones in the
+			  diagram and don't overwrite stones played earlier -
+			  this is the way diagrams are printed in books.
+			  'remove on' means: capture and remove the stones from
+			  the display - this is the usual viewer mode.
+			  This flag is specific to Go (GM[1]).
+			- <I>hoshi dots</I> on/off (value: 0/512)
+			  This flag is specific to Go (GM[1]).
+			- <I>Ignore flags</I> on/off (value: 32768)
+			  If on, then all other flags should be ignored and
+			  the application should use its own defaults.
+		  The final number is calculated by summing up all flag values.
+		  E.g. 515 = coordinates and diagram name off, remove captured
+		  stones, list unshown moves, hoshi dots off;
+		  257 = coordinates off, diagram name on, list unshown moves,
+		  don't remove captured stones, hoshi dots on.
+		  (this is how diagrams are printed in e.g. Go World)
+		Note: FG combined with VW, MN and PM are mighty tools to print
+		and compile diagrams.
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#MN">MN</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#PM">PM</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#VW">VW</A>
+
+<A name=PM><B>属性:</B>	PM</A>
+<B>属性值:</B>	<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#types">数</A>
+<B>属性类型:</B>	<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#inherit">后继性</A>
+<B>功能:</B>	This property is used for printing.
+		It specifies how move numbers should be printed.
+		0 ... don't print move numbers
+		1 ... print move numbers as they are
+		2 ... print 'modulo 100' move numbers
+			This mode is usually used in books or magazines.
+			Note: Only the first move number is calculated
+			'modulo 100' and the obtained number is increased
+			for each move in the diagram.
+			E.g. A figure containing moves
+				 32-78  is printed as moves 32-78
+				102-177 is printed as moves  2-77
+				 67-117 is printed as moves 67-117
+				154-213 is printed as moves 54-113
+		Default value: 1
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#MN">MN</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#FG">FG</A>
+
+<A name=VW><B>属性:</B>	VW</A>
+<B>属性值:</B>	elist of <A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#move/pos">点</A>
+<B>属性类型:</B>	<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#inherit">后继性</A>
+<B>功能:</B>	View only part of the board. The points listed are
+			visible, all other points are invisible.
+			Note: usually the point list is given in compressed
+			format (see 'point' type)!
+			Points have to be unique.
+			Have a look at the <A href="DD_VW.html">picture</A> to get an idea.
+			VW[] clears any setting, i.e. the whole board is
+			visible again.
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/properties.html#DD">DD</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#PM">PM</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#FG">FG</A>
+
+</PRE></BODY></HTML>

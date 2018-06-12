@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0035)http://www.red-bean.com/sgf/go.html -->
+<HTML><HEAD><TITLE>SGF - Go (GM[1])</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content="Microsoft FrontPage 5.0" name=GENERATOR></HEAD>
+<BODY aLink=#ff0000 bgColor=#ffffff link=#0000ff text=#000000 vLink=#ff0000>
+
+<IMG 
+alt="[SGF FF[4] - Smart Game Format]" border=0 src="head.gif" width="263" height="26"> 
+<H1>围棋 (GM[1])</H1>
+<H2><A name=types>走子、点和棋子类型</A></H2>
+在围棋中棋子被简化为点，而且走子和点用相同的方式表示: 两个小写字母。
+<P><IMG alt="[coordinates (TA2.gif)]" src="TA2.gif" width="138" height="139"> 点和走子的坐标系统 
+<P>第一个字母指定列数 (从左往右), 第二个指定行数 (从上往下)。棋盘的左上部分可当作小棋盘使用，例如字母 "a"-"m" 用于 13×13的棋盘。<BR>
+放弃一手用 '[]' 表示，也可以用 '[tt]' 代替(只可用于小于19×19的棋盘)，就是说应用软件应该能够处理这两种表示方式。保留 '[tt]' 的表示方式是为了兼容 FF[3]。<BR>
+使用小写字母仅用于小于 26×26 的棋盘。 
+<P> FF[4] 允许使用更大的棋盘直到 52×52。在这种情况下，大写字母被用于表示 27-52（行、列），就是说 'a'=1 ... 'z'=26 
+, 'A'=27 ... 'Z'=52 
+<H3><A name="execute move">如何实现走子</A></H3>
+在处理属性 B (或 W) 时，将在指定的位置放置一枚该色的棋子(无论该点原来是什么状态)。<BR>
+然后应用软件检查与之相邻的异色棋子的气数，如果气数为0则被提去，并增加对方的死子数。<BR>
+最后，检查自身的气数，如果气数为0，也应当被提去 (自杀) ，并增加己方的死子数。
+<H2><A name=properties>属性</A></H2>
+属性 TW 和 TB 指定的点必须唯一，就是说：在一个节点中 TB 和 TW 指定相同的点是非法的。
+<PRE><A name=HA><B>属性:</B>	HA</A>
+<B>属性值:</B>	<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#types">数</A>
+<B>属性类型:</B>	对局信息
+<B>功能:</B>	定义让子数(&gt;=2)。
+		如果有让子，让子的位置应当在该节点中由属性<A href="http://go.chengfan.info/static/sgf_cn/properties.html#AB">AB</A>指定。
+		属性 HA 本身不在棋盘上增加任何棋子，只是说明有让子存在。
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/go.html#KM">KM</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#RE">RE</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#RU">RU</A>
+
+<A name=KM><B>属性:</B>	KM</A>
+<B>属性值:</B>	<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#types">实数</A>
+<B>属性类型:</B>	对局信息
+<B>功能:</B>	定义贴还数。
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/go.html#HA">HA</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#RE">RE</A>, <A href="http://go.chengfan.info/static/sgf_cn/properties.html#RU">RU</A>
+
+<A name=TB><B>属性:</B>	TB</A>
+<B>属性值:</B>	由<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#move/pos">点</A>组成的列
+<B>属性类型:</B>	-
+<B>功能:</B>	指定黑棋的势力范围 (需根据围棋规则判定)。
+		指定的点必须唯一。
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/go.html#TW">TW</A>
+
+<A name=TW><B>属性:</B>	TW</A>
+<B>属性值:</B>	由<A href="http://go.chengfan.info/static/sgf_cn/sgf4.html#move/pos">点</A>组成的列
+<B>属性类型:</B>	-
+<B>功能:</B>	指定白棋的势力范围 (需根据围棋规则判定)。
+		指定的点必须唯一。
+<B>相关属性:</B>	<A href="http://go.chengfan.info/static/sgf_cn/go.html#TB">TB</A>
+
+</PRE></BODY></HTML>

@@ -1,0 +1,96 @@
+<HTML>
+<HEAD><TITLE>SGF - Variations</TITLE>
+</HEAD>
+<BODY alink="#FF0000" bgcolor="#FFFFFF" link="#0000FF" text="#000000" vlink="#FF0000">
+
+<A HREF="index.html"><IMG SRC="head.gif" ALT="[SGF FF[4] - Smart Game Format]" BORDER=0></A> <I>最后更新: 2003-10-10(原文last updated: 1999-1-7) </I>
+
+<A NAME="4"><H1>分支</H1></A>
+
+SGF 的内在的结构是由属性列组成的数形结构。
+这样的结构允许存储不同于实战的变化图。
+树结构按照前序遍历记录。
+下面是一个有关按前序遍历记录树结构的简短说明。
+<P>
+<TABLE BORDER=1>
+<TR><TD BGCOLOR=#ff0000><FONT COLOR=white>算法</FONT>
+<TD BGCOLOR=#ff0000><FONT COLOR=white>示范图</FONT>
+<TD BGCOLOR=#ff0000><FONT COLOR=white>前序遍历</FONT>
+<TR><TD ROWSPAN=3>
+<PRE>
+WriteTree(Root)
+End
+
+WriteTree(Node)
+   Write(Node)
+   for each child of Node
+      WriteTree(child)
+   end for
+end
+</PRE>
+<TD ROWSPAN=3><IMG SRC="TA1.gif">
+<TD>root a b c d e f g h i j
+<TR><TD BGCOLOR=#ff0000><FONT COLOR=white>SGF</FONT>
+<TR><TD><PRE>(;FF[4]C[root](;C[a];C[b](;C[c])
+(;C[d];C[e]))
+(;C[f](;C[g];C[h];C[i])
+(;C[j])))
+</PRE>
+</TABLE>
+<P>
+请对照 <A HREF="examples">SGF 示例文件</A> 和 <A HREF="user_guide">用户指南</A> 再次阅读 <A HREF="http://go.chengfan.info/static/sgf_cn/sgf4.html#ebnf-def">EBNF 定义</A>来了解更多的细节，例如有关注释和分支队问题。最新的属性:
+<A HREF="http://go.chengfan.info/static/sgf_cn/properties.html#ST">ST</A>, <A HREF="http://go.chengfan.info/static/sgf_cn/properties.html#C">C</A>,
+<A HREF="http://go.chengfan.info/static/sgf_cn/properties.html#N">N</A>。
+<P>
+下面是一些例子，来帮助你理解 EBNF 定义及其在分支上的应用。
+<BR><SMALL>图片来自于 cgoban</SMALL>
+<P>
+
+<TABLE BORDER=1>
+<TR><TD ROWSPAN=2 BGCOLOR=#efefff>无分支
+<TD><IMG SRC="var1.gif">
+<TR><TD><PRE>(;FF[4]GM[1]SZ[19];B[aa];W[bb];B[cc];W[dd];B[ad];W[bd])</PRE>
+
+<TR><TD ROWSPAN=3 BGCOLOR=#efffff>在第3手有1个分支
+<TD><IMG SRC="var2.gif">
+<TR><TD><PRE>(;FF[4]GM[1]SZ[19];B[aa];W[bb](;B[cc];W[dd];B[ad];W[bd])
+(;B[hh];W[hg]))</PRE>
+<TR><TD>注意新的对局树的起点位于节点<TT>B[cc]</TT>之前，分支本身在第二行。
+末尾有两个 ")" ，一个是分支的结尾，另一个是从<TT>FF[4]</TT>开始的主干的结尾。
+
+<TR><TD ROWSPAN=3 BGCOLOR=#efefff>在第3手有2个分支
+<TD><IMG SRC="var3.gif">
+<TR><TD><PRE>(;FF[4]GM[1]SZ[19];B[aa];W[bb](;B[cc]N[Var A];W[dd];B[ad];W[bd])
+(;B[hh]N[Var B];W[hg])
+(;B[gg]N[Var C];W[gh];B[hh];W[hg];B[kk]))</PRE>
+<TR><TD>通常主干杯标记为分支 "A" ，第一个分支为分支 "B"，第二个分支为分支 "C" 等等。这就是为什么许多注释提到的下一手称作 "A" 的原因。
+
+<TR><TD ROWSPAN=3 BGCOLOR=#efffff>在不同位置的2个分支
+<TD><IMG SRC="var4.gif">
+<TR><TD><PRE>(;FF[4]GM[1]SZ[19];B[aa];W[bb](;B[cc];W[dd](;B[ad];W[bd])
+(;B[ee];W[ff]))
+(;B[hh];W[hg]))</PRE>
+<TR><TD>新的对局树的起点位于节点<TT>B[ad]</TT>之前。第二个分支（第二行）位于第一个分支（第三行）前。
+再看看括号的对应关系。
+
+<TR><TD ROWSPAN=3 BGCOLOR=#efefff>分支上的分支
+<TD><IMG SRC="var5.gif">
+<TR><TD><PRE>(;FF[4]GM[1]SZ[19];B[aa];W[bb](;B[cc]N[Var A];W[dd];B[ad];W[bd])
+(;B[hh]N[Var B];W[hg])
+(;B[gg]N[Var C];W[gh];B[hh]  (;W[hg]N[Var A];B[kk])  (;W[kl]N[Var B])))</PRE>
+<TR><TD>新的对局树的起点位于节点<TT>W[hg]</TT>之前。注意末尾有三个 ")" ，一个是分支<TT>W[kl]</TT>的结尾，一个是分支<TT>B[gg]</TT>的结尾，一个是主干的结尾。
+</TABLE>
+
+<P>
+<H2>容易犯的错误:</H3>
+任何一个分支至少有一个节点 (参看 <A HREF="http://go.chengfan.info/static/sgf_cn/sgf4.html#ebnf-def">EBNF
+定义</A>)! 就是说，最小可能的分支如 <TT>(;)</TT> - <TT>()</TT> 是错误的！
+另一个例子: 从“分支上的分支”删除所有的属性的示例将导致:
+<TT>(;;;(;;;;)(;;)(;;;(;;)(;)))</TT> 然后再删除不需要的节点导致 <TT>(;(;)(;)(;(;)(;)))</TT>
+<P>
+属性是节点的一部分，因此 <TT>(W[tt])</TT> 是错误的。
+正确的表示方式是 <TT>(<B>;</B>W[tt])</TT>
+<P>
+属性不能出现在对局树的外部！例如 <TT>(;)W[tt]</TT> 是错误的。
+
+</BODY></HTML>
